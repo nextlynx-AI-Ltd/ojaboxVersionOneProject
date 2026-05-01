@@ -124,7 +124,7 @@ const Customize = () => {
           {/* Items List */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <Image src={pack.icon} alt={pack.name} width={48} height={48} className="object-contain" />
+              <Image src={pack.icon} alt={pack.name} width={48} height={48} unoptimized className="object-contain" />
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold">{pack.name}</h1>
                 <p className="text-sm text-muted-foreground">{pack.description}</p>
@@ -156,6 +156,7 @@ const Customize = () => {
                               alt={ci.item.name}
                               width={48}
                               height={48}
+                              unoptimized
                               className="object-cover rounded-xl"
                             />
                           </div>
@@ -242,6 +243,7 @@ const Customize = () => {
                                   alt={item.name}
                                   width={40}
                                   height={40}
+                                  unoptimized
                                   className="rounded-lg object-cover"
                                 />
                                 <div className="flex-1 min-w-0">
@@ -284,6 +286,7 @@ const Customize = () => {
                         alt={ci.item.name}
                         width={16}
                         height={16}
+                        unoptimized
                         className="rounded-full object-cover"
                       />
                       {ci.item.name} x{ci.quantity}

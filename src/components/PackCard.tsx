@@ -17,6 +17,7 @@ const PackCard = ({ pack }: PackCardProps) => (
           alt={pack.name}
           width={40}
           height={40}
+          unoptimized
           className="object-contain"
         />
       </div>
@@ -42,6 +43,7 @@ const PackCard = ({ pack }: PackCardProps) => (
             alt={pi.item.name}
             width={16}
             height={16}
+            unoptimized
             className="rounded-full object-cover"
           />
           <span className="text-muted-foreground">{pi.item.name.split(" ")[0]}</span>

@@ -3,15 +3,22 @@
 import { ShoppingBasket, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import Image from "next/image"
 
 const Header = () => {
   const [open, setOpen] = useState(false)
   return (
     <header className="sticky top-0 z-50 border-b bg-card/80 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-          <ShoppingBasket className="h-6 w-6 text-primary" />
-          <span>Oja Box</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-main.svg"
+            alt="OjaBox"
+            width={120}
+            height={40}
+            className="object-contain"
+            priority
+          />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>

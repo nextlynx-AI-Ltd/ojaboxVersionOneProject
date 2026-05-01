@@ -169,6 +169,7 @@ const Checkout = () => {
                         alt={ci.item.name}
                         width={20}
                         height={20}
+                        unoptimized
                         className="rounded object-cover shrink-0"
                       />
                       <span className="truncate">{ci.item.name} x{ci.quantity}</span>

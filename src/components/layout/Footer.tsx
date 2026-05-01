@@ -1,14 +1,20 @@
 import { ShoppingBasket, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const Footer = () => (
   <footer className="border-t bg-secondary/50 mt-20">
     <div className="container py-12 grid gap-8 md:grid-cols-3">
       <div>
-        <div className="flex items-center gap-2 font-bold text-lg mb-3">
-          <ShoppingBasket className="h-5 w-5 text-primary" />
-          Oja Box
-        </div>
+        
+          <Image
+            src="/logo-stacked.svg"
+            alt="OjaBox"
+            width={100}
+            height={70}
+            className="object-contain mb-3"
+          />
+        
         <p className="text-sm text-muted-foreground leading-relaxed">
           Restock your kitchen without the market stress. Fresh foodstuff packs delivered to your door in Lagos.
         </p>
