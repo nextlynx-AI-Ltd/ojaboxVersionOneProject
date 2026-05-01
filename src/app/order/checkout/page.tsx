@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { formatPrice } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
 
-const DELIVERY_FEE = 2500
+const DELIVERY_FEE = 3000
 const PACKAGING_FEE = 800
 const SERVICE_CHARGE = 1500
 
