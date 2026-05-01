@@ -1,0 +1,195 @@
+export type ItemCategory = "staples" | "quick-foods" | "cooking-essentials" | "extras";
+
+export const categoryLabels: Record<ItemCategory, string> = {
+  staples: "Staples / Essentials",
+  "quick-foods": "Quick Foods",
+  "cooking-essentials": "Cooking Essentials",
+  extras: "Extras",
+};
+
+export interface FoodItem {
+  id: string;
+  name: string;
+  unit: string;
+  pricePerUnit: number;
+  category: ItemCategory;
+  image: string;
+  description: string;
+}
+
+export interface PackItem {
+  item: FoodItem;
+  quantity: number;
+  min: number;
+  max: number;
+}
+
+export interface Pack {
+  id: string;
+  name: string;
+  description: string;
+  target: string;
+  basePrice: number;
+  icon: string;
+  items: PackItem[];
+}
+
+export const allItems: FoodItem[] = [
+  // Staples
+  { id: "rice", name: "Rice (Local)", unit: "5kg bag", pricePerUnit: 7500, category: "staples", image: "/assets/items/rice.jpg", description: "Premium Nigerian long-grain rice" },
+  { id: "garri", name: "Garri (Ijebu)", unit: "2kg bag", pricePerUnit: 2000, category: "staples", image: "/assets/items/garri.jpg", description: "Crispy Ijebu garri for eba or soaking" },
+  { id: "beans", name: "Beans", unit: "2kg bag", pricePerUnit: 4000, category: "staples", image: "/assets/items/beans.jpg", description: "Clean, stone-free honey beans" },
+  { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber of white yam" },
+  { id: "elubo", name: "Yam Flour (Elubo)", unit: "1kg bag", pricePerUnit: 2500, category: "staples", image: "/assets/items/elubo.jpg", description: "Ground yam flour for amala" },
+  { id: "semo", name: "Semovita", unit: "1kg pack", pricePerUnit: 1500, category: "staples", image: "/assets/items/semo.jpg", description: "Smooth semovita for swallow" },
+
+  // Quick Foods
+  { id: "spaghetti", name: "Spaghetti", unit: "pack", pricePerUnit: 900, category: "quick-foods", image: "/assets/items/spaghetti.jpg", description: "Quality spaghetti pasta" },
+  { id: "macaroni", name: "Macaroni", unit: "pack", pricePerUnit: 800, category: "quick-foods", image: "/assets/items/macaroni.jpg", description: "Elbow macaroni pasta" },
+  { id: "noodles", name: "Noodles", unit: "pack", pricePerUnit: 250, category: "quick-foods", image: "/assets/items/noodles.jpg", description: "Instant noodles" },
+  { id: "oats", name: "Oats", unit: "500g pack", pricePerUnit: 1200, category: "quick-foods", image: "/assets/items/oats.jpg", description: "Rolled oats for breakfast" },
+
+  // Cooking Essentials
+  { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 300, category: "cooking-essentials", image: "/assets/items/salt.jpg", description: "Iodized table salt" },
+  { id: "seasoning-cubes", name: "Seasoning Cubes", unit: "pack", pricePerUnit: 800, category: "cooking-essentials", image: "/assets/items/seasoning-cubes.jpg", description: "Maggi/Knorr seasoning cubes" },
+  { id: "palm-oil", name: "Palm Oil", unit: "1L bottle", pricePerUnit: 2000, category: "cooking-essentials", image: "/assets/items/palm-oil.jpg", description: "Fresh, unadulterated palm oil" },
+  { id: "veg-oil", name: "Vegetable Oil", unit: "1L bottle", pricePerUnit: 2200, category: "cooking-essentials", image: "/assets/items/veg-oil.jpg", description: "Pure vegetable cooking oil" },
+  { id: "tomato-paste", name: "Tomato Paste", unit: "sachet/tin", pricePerUnit: 500, category: "cooking-essentials", image: "/assets/items/tomato-paste.jpg", description: "Rich tomato paste" },
+  { id: "ground-pepper", name: "Ground Pepper (Ata Gungun)", unit: "portion", pricePerUnit: 1000, category: "cooking-essentials", image: "/assets/items/ground-pepper.jpg", description: "Dried ground pepper" },
+  { id: "seasoning-mix", name: "Seasoning (Curry, Thyme)", unit: "set", pricePerUnit: 600, category: "cooking-essentials", image: "/assets/items/seasoning-mix.jpg", description: "Curry & thyme seasoning set" },
+  { id: "onions", name: "Onions", unit: "piece", pricePerUnit: 300, category: "cooking-essentials", image: "/assets/items/onions.jpg", description: "Fresh medium-sized onions" },
+
+  // Extras
+  { id: "iru", name: "Locust Beans (Iru)", unit: "portion", pricePerUnit: 500, category: "extras", image: "/assets/items/iru.jpg", description: "Fermented locust beans for soups" },
+  { id: "eggs", name: "Eggs", unit: "crate (30)", pricePerUnit: 3500, category: "extras", image: "/assets/items/eggs.jpg", description: "Fresh chicken eggs" },
+  { id: "plantain", name: "Plantain", unit: "piece", pricePerUnit: 400, category: "extras", image: "/assets/items/plantain.jpg", description: "Ripe plantain for frying or boiling" },
+  { id: "potatoes", name: "Potatoes", unit: "portion", pricePerUnit: 1500, category: "extras", image: "/assets/items/potatoes.jpg", description: "Fresh Irish potatoes" },
+  { id: "ginger-garlic", name: "Ginger & Garlic", unit: "portion", pricePerUnit: 800, category: "extras", image: "/assets/items/ginger-garlic.jpg", description: "Fresh ginger root and garlic" },
+  { id: "cornflakes", name: "Cornflakes", unit: "pack", pricePerUnit: 2500, category: "extras", image: "/assets/items/cornflakes.jpg", description: "Breakfast cornflakes cereal" },
+  { id: "milk", name: "Milk", unit: "tin", pricePerUnit: 1500, category: "extras", image: "/assets/items/milk.jpg", description: "Powdered or evaporated milk" },
+  { id: "milo", name: "Milo", unit: "tin", pricePerUnit: 2500, category: "extras", image: "/assets/items/milo.jpg", description: "Milo chocolate drink" },
+  { id: "sugar", name: "Sugar", unit: "500g pack", pricePerUnit: 800, category: "extras", image: "/assets/items/sugar.jpg", description: "Granulated white sugar" },
+  { id: "tea-coffee", name: "Tea / Coffee", unit: "pack", pricePerUnit: 600, category: "extras", image: "/assets/items/tea-coffee.jpg", description: "Lipton tea or instant coffee" },
+  { id: "custard", name: "Custard", unit: "pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/custard.jpg", description: "Custard powder for breakfast" },
+  { id: "pap", name: "Pap (Ogi)", unit: "portion", pricePerUnit: 800, category: "extras", image: "/assets/items/pap.jpg", description: "Nigerian corn pap" },
+];
+
+const getItem = (id: string) => allItems.find((i) => i.id === id)!;
+
+export const packs: Pack[] = [
+  {
+    id: "solo-essentials",
+    name: "Solo Essentials",
+    description: "Perfect for one person living alone. Covers your basics for 2–3 weeks.",
+    target: "1 person",
+    icon: "/assets/packs/solo.png",
+    basePrice: 18000,
+    items: [
+      { item: getItem("rice"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("beans"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("garri"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("spaghetti"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("noodles"), quantity: 5, min: 2, max: 10 },
+      { item: getItem("veg-oil"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("palm-oil"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("salt"), quantity: 1, min: 1, max: 1 },
+      { item: getItem("seasoning-cubes"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("tomato-paste"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("ground-pepper"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("onions"), quantity: 3, min: 1, max: 6 },
+      { item: getItem("eggs"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("plantain"), quantity: 4, min: 0, max: 8 },
+    ],
+  },
+  {
+    id: "two-persons",
+    name: "2-Persons Pack",
+    description: "For couples or roommates. A well-rounded selection for weekly cooking.",
+    target: "2 people",
+    icon: "/assets/packs/two-persons.png",
+    basePrice: 32000,
+    items: [
+      { item: getItem("rice"), quantity: 2, min: 1, max: 3 },
+      { item: getItem("beans"), quantity: 1, min: 1, max: 3 },
+      { item: getItem("garri"), quantity: 1, min: 0, max: 3 },
+      { item: getItem("semo"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("spaghetti"), quantity: 3, min: 1, max: 6 },
+      { item: getItem("noodles"), quantity: 8, min: 3, max: 15 },
+      { item: getItem("veg-oil"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("palm-oil"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("salt"), quantity: 1, min: 1, max: 1 },
+      { item: getItem("seasoning-cubes"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("tomato-paste"), quantity: 4, min: 2, max: 8 },
+      { item: getItem("ground-pepper"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("onions"), quantity: 5, min: 2, max: 10 },
+      { item: getItem("eggs"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("plantain"), quantity: 6, min: 0, max: 12 },
+      { item: getItem("potatoes"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
+    ],
+  },
+  {
+    id: "small-family",
+    name: "Small Family Pack",
+    description: "For a family of 3–4. Everything you need to keep the kitchen running.",
+    target: "3–4 people",
+    icon: "/assets/packs/family.png",
+    basePrice: 52000,
+    items: [
+      { item: getItem("rice"), quantity: 3, min: 2, max: 5 },
+      { item: getItem("beans"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("garri"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("semo"), quantity: 2, min: 0, max: 4 },
+      { item: getItem("spaghetti"), quantity: 5, min: 2, max: 10 },
+      { item: getItem("noodles"), quantity: 12, min: 5, max: 20 },
+      { item: getItem("veg-oil"), quantity: 3, min: 2, max: 6 },
+      { item: getItem("palm-oil"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("salt"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("seasoning-cubes"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("tomato-paste"), quantity: 6, min: 3, max: 12 },
+      { item: getItem("ground-pepper"), quantity: 1, min: 1, max: 3 },
+      { item: getItem("onions"), quantity: 8, min: 4, max: 15 },
+      { item: getItem("eggs"), quantity: 2, min: 0, max: 4 },
+      { item: getItem("plantain"), quantity: 10, min: 0, max: 20 },
+      { item: getItem("potatoes"), quantity: 1, min: 0, max: 3 },
+      { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
+    ],
+  },
+  {
+    id: "monthly-essentials",
+    name: "Monthly Essentials",
+    description: "Full monthly restock for a household. Bulk quantities to last the whole month.",
+    target: "2–4 people",
+    icon: "/assets/packs/monthly.png",
+    basePrice: 75000,
+    items: [
+      { item: getItem("rice"), quantity: 4, min: 3, max: 8 },
+      { item: getItem("beans"), quantity: 3, min: 2, max: 6 },
+      { item: getItem("garri"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("elubo"), quantity: 1, min: 0, max: 3 },
+      { item: getItem("semo"), quantity: 3, min: 1, max: 5 },
+      { item: getItem("spaghetti"), quantity: 8, min: 4, max: 15 },
+      { item: getItem("noodles"), quantity: 20, min: 10, max: 30 },
+      { item: getItem("veg-oil"), quantity: 5, min: 3, max: 8 },
+      { item: getItem("palm-oil"), quantity: 3, min: 1, max: 5 },
+      { item: getItem("salt"), quantity: 1, min: 1, max: 2 },
+      { item: getItem("seasoning-cubes"), quantity: 3, min: 1, max: 5 },
+      { item: getItem("tomato-paste"), quantity: 10, min: 5, max: 18 },
+      { item: getItem("ground-pepper"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("onions"), quantity: 10, min: 5, max: 20 },
+      { item: getItem("eggs"), quantity: 2, min: 1, max: 4 },
+      { item: getItem("plantain"), quantity: 15, min: 5, max: 25 },
+      { item: getItem("potatoes"), quantity: 1, min: 0, max: 3 },
+      { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("cornflakes"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("milk"), quantity: 1, min: 0, max: 3 },
+      { item: getItem("milo"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("sugar"), quantity: 1, min: 0, max: 3 },
+    ],
+  },
+];
+
+export const formatPrice = (amount: number) =>
+  "₦" + amount.toLocaleString("en-NG");
