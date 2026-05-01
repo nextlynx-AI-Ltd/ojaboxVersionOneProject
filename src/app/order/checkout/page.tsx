@@ -186,6 +186,14 @@ const Checkout = () => {
                   <span>{formatPrice(order.total)}</span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-muted-foreground">Packaging</span>
+                  <span>{formatPrice(PACKAGING_FEE)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Service Charge</span>
+                  <span>{formatPrice(SERVICE_CHARGE)}</span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-muted-foreground">Delivery</span>
                   <span>{formatPrice(DELIVERY_FEE)}</span>
                 </div>

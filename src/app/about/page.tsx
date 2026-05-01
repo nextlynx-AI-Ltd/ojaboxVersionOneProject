@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button"
 
 const team = [
   {
-    name: "Tobiloba Emmanuel",
-    role: "Co-founder & Operations",
+    name: "Oluwatobi Akano",
+    role: "Founder",
     bio: "Born and raised in Lagos. Spent years understanding the supply chain before deciding to solve the market stress problem for busy professionals.",
-    initials: "T.E.",
+    initials: "O.A.",
   },
   {
     name: "Timilehin Amolegbe",
-    role: "Co-founder & Product",
+    role: "Developer",
     bio: "A developer who got tired of spending Saturdays at the market. Builds every part of the Oja Box experience with real Lagos users in mind.",
     initials: "T.A.",
   },
