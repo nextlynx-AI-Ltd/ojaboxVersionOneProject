@@ -4,6 +4,7 @@ import "./globals.css"
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
 import { Toaster } from "@/components/ui/sonner"
+import { OrderProvider } from "@/context/OrderContext"
 
 const geist = Geist({ subsets: ["latin"] })
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={geist.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster />
+        <OrderProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+        </OrderProvider>
       </body>
     </html>
   )
