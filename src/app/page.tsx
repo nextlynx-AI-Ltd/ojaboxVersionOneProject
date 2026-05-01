@@ -84,6 +84,28 @@ const Index = () => (
       </div>
     </section>
 
+        {/* How It Works */}
+    <section id="how-it-works" className="bg-secondary/30 border-y">
+      <div className="container py-16 md:py-20">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">How it works</h2>
+        <div className="grid gap-8 md:grid-cols-3 max-w-3xl mx-auto">
+          {[
+            { step: "1", title: "Pick a pack", desc: "Choose a pre-built foodstuff box that matches your household size and cooking style." },
+            { step: "2", title: "Customize it", desc: "Add, remove, or adjust quantities. See your total update in real time — no surprises." },
+            { step: "3", title: "Get it delivered", desc: "Pay securely via Paystack and receive your box within 24–48 hours in Ikeja." },
+          ].map(({ step, title, desc }) => (
+            <div key={step} className="text-center">
+              <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-lg font-bold">
+                {step}
+              </div>
+              <h3 className="font-semibold text-lg mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Packs Preview */}
     <section className="container py-16 md:py-20">
       <div className="text-center mb-12">
@@ -106,27 +128,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* How It Works */}
-    <section id="how-it-works" className="bg-secondary/30 border-y">
-      <div className="container py-16 md:py-20">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">How it works</h2>
-        <div className="grid gap-8 md:grid-cols-3 max-w-3xl mx-auto">
-          {[
-            { step: "1", title: "Pick a pack", desc: "Choose a pre-built foodstuff box that matches your household size and cooking style." },
-            { step: "2", title: "Customize it", desc: "Add, remove, or adjust quantities. See your total update in real time — no surprises." },
-            { step: "3", title: "Get it delivered", desc: "Pay securely via Paystack and receive your box within 24–48 hours in Ikeja." },
-          ].map(({ step, title, desc }) => (
-            <div key={step} className="text-center">
-              <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                {step}
-              </div>
-              <h3 className="font-semibold text-lg mb-2">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+
 
     {/* Testimonials */}
     <section className="container py-16 md:py-20">
