@@ -15,12 +15,6 @@ const team = [
     initials: "T.A.",
   },
   {
-    name: "Timilehin Amolegbe",
-    role: "Co-founder & Product",
-    bio: "A developer who got tired of spending Saturdays at the market. Builds every part of the Oja Box experience with real Lagos users in mind.",
-    initials: "T.A.",
-  },
-  {
     name: "Lady Adeola",
     role: "Operations Manager",
     bio: "Lagos market veteran with 15+ years of experience. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
