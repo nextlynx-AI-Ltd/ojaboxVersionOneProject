@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from "react"
 
 import Link from "next/link"
 import { CheckCircle2, MessageCircle, Package, Clock } from "lucide-react"
@@ -10,14 +11,31 @@ const Confirmation = () => {
   const { confirmation } = useOrder()
 
   if (!confirmation) {
-    return (
-      <div className="container py-20 text-center">
-        <h1 className="text-2xl font-bold mb-4">No confirmation found</h1>
-        <Button asChild>
-          <Link href="/">Go home</Link>
-        </Button>
-      </div>
-    )
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+      const timer = setTimeout(() => setIsLoading(false), 100)
+      return () => clearTimeout(timer)
+      }, [])
+
+      if (isLoading) {
+        return (
+          <div className="container py-20 text-center">
+            <div className="h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          </div>
+        )
+      }
+
+      if (!confirmation) {
+        return (
+          <div className="container py-20 text-center">
+            <h1 className="text-2xl font-bold mb-4">No confirmation found</h1>
+            <Button asChild>
+              <Link href="/">Go home</Link>
+            </Button>
+          </div>
+        )
+      }
   }
 
   const whatsappMessage = encodeURIComponent(

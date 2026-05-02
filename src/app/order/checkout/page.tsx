@@ -11,15 +11,17 @@ import { Label } from "@/components/ui/label"
 import { formatPrice } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
 
-const DELIVERY_FEE = 3000
-const PACKAGING_FEE = 800
-const SERVICE_CHARGE = 1500
+const DELIVERY_FEE = 2500
+const PACKAGING_FEE = 500
+const SERVICE_CHARGE = 300
 
 const Checkout = () => {
   const router = useRouter()
   const { order, setConfirmation, clearOrder } = useOrder()
   const [form, setForm] = useState({ name: "", phone: "", address: "", area: "" })
   const [submitting, setSubmitting] = useState(false)
+
+  const grandTotal = order ? order.total + DELIVERY_FEE + PACKAGING_FEE + SERVICE_CHARGE : 0
 
   if (!order) {
     return (
@@ -32,58 +34,96 @@ const Checkout = () => {
     )
   }
 
-  const grandTotal = order.total + DELIVERY_FEE + PACKAGING_FEE + SERVICE_CHARGE
   const isValid = form.name && form.phone && form.address && form.area
 
+  const handlePaymentSuccess = async (response: { reference: string }) => {
+    setSubmitting(true)
+    try {
+      // Verify payment on server
+      const verifyRes = await fetch("/api/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference: response.reference }),
+      })
 
-   const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault()
-      if (!isValid) return
-      setSubmitting(true)
+      const { verified } = await verifyRes.json()
 
-      try {
-        const orderReference = "OJA-" + Math.random().toString(36).substring(2, 8).toUpperCase()
-        const grandTotal = order!.total + DELIVERY_FEE + PACKAGING_FEE + SERVICE_CHARGE
-
-        const itemsSummary = order!.items
-          .map((ci) => `${ci.item.name} x${ci.quantity}`)
-          .join(", ")
-
-        // Send to Airtable
-        await fetch("/api/orders", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            orderReference,
-            customerName: form.name,
-            phoneNumber: form.phone,
-            deliveryAddress: form.address,
-            area: form.area,
-            packName: order!.packName,
-            items: itemsSummary,
-            subtotal: order!.total,
-            deliveryFee: DELIVERY_FEE,
-            packagingFee: PACKAGING_FEE,
-            serviceCharge: SERVICE_CHARGE,
-            grandTotal,
-          }),
-        })
-
-        setConfirmation({
-          orderId: orderReference,
-          packName: order!.packName,
-          grandTotal,
-          delivery: form,
-          date: new Date().toISOString(),
-        })
-
-        clearOrder()
-        router.push("/order/confirmation")
-      } catch (error) {
-        console.error("Order error:", error)
+      if (!verified) {
+        alert("Payment verification failed. Please contact support.")
         setSubmitting(false)
+        return
       }
+
+      const itemsSummary = order.items
+        .map((ci) => `${ci.item.name} x${ci.quantity}`)
+        .join(", ")
+
+      // Save to Airtable
+      await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderReference: response.reference,
+          customerName: form.name,
+          phoneNumber: form.phone,
+          deliveryAddress: form.address,
+          area: form.area,
+          packName: order.packName,
+          items: itemsSummary,
+          subtotal: order.total,
+          deliveryFee: DELIVERY_FEE,
+          packagingFee: PACKAGING_FEE,
+          serviceCharge: SERVICE_CHARGE,
+          grandTotal,
+        }),
+      })
+
+      setConfirmation({
+        orderId: response.reference,
+        packName: order.packName,
+        grandTotal,
+        delivery: form,
+        date: new Date().toISOString(),
+      })
+
+      clearOrder()
+      router.push("/order/confirmation")
+    } catch (error) {
+      console.error("Payment processing error:", error)
+      setSubmitting(false)
     }
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!isValid) return
+
+    const reference = "OJA-" + Math.random().toString(36).substring(2, 8).toUpperCase()
+
+    const handler = (window as any).PaystackPop.setup({
+      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+      email: `${form.phone}@ojabox.com`,
+      amount: grandTotal * 100,
+      currency: "NGN",
+      ref: reference,
+      metadata: {
+        custom_fields: [
+          { display_name: "Customer Name", variable_name: "customer_name", value: form.name },
+          { display_name: "Phone", variable_name: "phone", value: form.phone },
+          { display_name: "Address", variable_name: "address", value: form.address },
+        ]
+      },
+      callback: (response: { reference: string }) => {
+        handlePaymentSuccess(response)
+      },
+      onClose: () => {
+        setSubmitting(false)
+      },
+    })
+
+    handler.openIframe()
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="container py-8 md:py-12 flex-1">
@@ -109,7 +149,8 @@ const Checkout = () => {
                   <Input
                     id="name"
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setForm({ ...form, name: e.target.value })}
                     placeholder="Amaka Johnson"
                   />
                 </div>
@@ -118,7 +159,8 @@ const Checkout = () => {
                   <Input
                     id="phone"
                     value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setForm({ ...form, phone: e.target.value })}
                     placeholder="0801 234 5678"
                   />
                 </div>
@@ -127,7 +169,8 @@ const Checkout = () => {
                   <Input
                     id="address"
                     value={form.address}
-                    onChange={(e) => setForm({ ...form, address: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setForm({ ...form, address: e.target.value })}
                     placeholder="12 Toyin Street, Ikeja"
                   />
                 </div>
@@ -136,7 +179,8 @@ const Checkout = () => {
                   <Input
                     id="area"
                     value={form.area}
-                    onChange={(e) => setForm({ ...form, area: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setForm({ ...form, area: e.target.value })}
                     placeholder="Allen, Ogba, Maryland..."
                   />
                 </div>
@@ -162,7 +206,6 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Trust messaging */}
             <div className="rounded-xl bg-primary/5 border border-primary/10 p-4 flex flex-wrap gap-4 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5 text-primary" /> Delivery within 24–48 hours in Ikeja
@@ -199,7 +242,6 @@ const Checkout = () => {
                         alt={ci.item.name}
                         width={20}
                         height={20}
-                        unoptimized
                         className="rounded object-cover shrink-0"
                       />
                       <span className="truncate">{ci.item.name} x{ci.quantity}</span>
@@ -216,16 +258,16 @@ const Checkout = () => {
                   <span>{formatPrice(order.total)}</span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-muted-foreground">Delivery</span>
+                  <span>{formatPrice(DELIVERY_FEE)}</span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-muted-foreground">Packaging</span>
                   <span>{formatPrice(PACKAGING_FEE)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Service Charge</span>
                   <span>{formatPrice(SERVICE_CHARGE)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Delivery</span>
-                  <span>{formatPrice(DELIVERY_FEE)}</span>
                 </div>
                 <div className="flex justify-between font-semibold text-base pt-2 border-t">
                   <span>Total</span>

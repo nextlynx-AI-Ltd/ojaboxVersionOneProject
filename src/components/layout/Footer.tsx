@@ -7,13 +7,13 @@ const Footer = () => (
     <div className="container py-12 grid gap-8 md:grid-cols-3">
       <div>
         
-          <Image
-            src="/logo-stacked.svg"
-            alt="OjaBox"
-            width={100}
-            height={70}
-            className="object-contain mb-3"
-          />
+        <Image
+          src="/logo-stacked.svg"
+          alt="OjaBox"
+          width={100}
+          height={70}
+          style={{ width: "100px", height: "auto" }}
+        />
         
         <p className="text-sm text-muted-foreground leading-relaxed">
           Restock your kitchen without the market stress. Fresh foodstuff packs delivered to your door in Lagos.

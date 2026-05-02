@@ -16,7 +16,7 @@ const Header = () => {
             alt="OjaBox"
             width={120}
             height={40}
-            className="object-contain"
+            style={{ width: "120px", height: "auto" }}
             priority
           />
         </Link>
