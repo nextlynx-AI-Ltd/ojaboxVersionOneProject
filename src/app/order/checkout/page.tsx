@@ -36,24 +36,54 @@ const Checkout = () => {
   const isValid = form.name && form.phone && form.address && form.area
 
 
-    const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!isValid) return
-    setSubmitting(true)
+   const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      if (!isValid) return
+      setSubmitting(true)
 
-    setTimeout(() => {
-        setConfirmation({
-        orderId: "OJA-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
-        packName: order!.packName,
-        grandTotal,
-        delivery: form,
-        date: new Date().toISOString(),
+      try {
+        const orderReference = "OJA-" + Math.random().toString(36).substring(2, 8).toUpperCase()
+        const grandTotal = order!.total + DELIVERY_FEE + PACKAGING_FEE + SERVICE_CHARGE
+
+        const itemsSummary = order!.items
+          .map((ci) => `${ci.item.name} x${ci.quantity}`)
+          .join(", ")
+
+        // Send to Airtable
+        await fetch("/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            orderReference,
+            customerName: form.name,
+            phoneNumber: form.phone,
+            deliveryAddress: form.address,
+            area: form.area,
+            packName: order!.packName,
+            items: itemsSummary,
+            subtotal: order!.total,
+            deliveryFee: DELIVERY_FEE,
+            packagingFee: PACKAGING_FEE,
+            serviceCharge: SERVICE_CHARGE,
+            grandTotal,
+          }),
         })
+
+        setConfirmation({
+          orderId: orderReference,
+          packName: order!.packName,
+          grandTotal,
+          delivery: form,
+          date: new Date().toISOString(),
+        })
+
         clearOrder()
         router.push("/order/confirmation")
-    }, 2000)
+      } catch (error) {
+        console.error("Order error:", error)
+        setSubmitting(false)
+      }
     }
-
   return (
     <div className="min-h-screen flex flex-col">
       <div className="container py-8 md:py-12 flex-1">
