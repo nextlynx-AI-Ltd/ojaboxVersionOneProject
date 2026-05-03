@@ -1,4 +1,4 @@
-import { ShoppingBasket, MessageCircle } from "lucide-react"
+import { ShoppingBasket, MessageCircle, X, Mail } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -16,7 +16,7 @@ const Footer = () => (
         />
         
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Restock your kitchen without the market stress. Fresh foodstuff packs delivered to your door in Lagos.
+          Powered by NextLynx.ai Ltd
         </p>
       </div>
       <div>
@@ -33,12 +33,30 @@ const Footer = () => (
           href="https://wa.me/2348139578438"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline"
+          className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline mb-3"
         >
           <MessageCircle className="h-4 w-4" />
           Chat with us on WhatsApp
         </a>
-        <p className="text-xs text-muted-foreground mt-4">© {new Date().getFullYear()} Oja Box. Lagos, Nigeria.</p>
+        <div className="flex gap-3 mb-4">
+          <a
+            href="https://twitter.com/ojabox"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+            title="Follow us on X"
+          >
+            <X className="h-4 w-4" />
+          </a>
+          <a
+            href="mailto:hello@ojabox.com"
+            className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+            title="Email us"
+          >
+            <Mail className="h-4 w-4" />
+          </a>
+        </div>
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Oja Box. Lagos, Nigeria.</p>
       </div>
     </div>
   </footer>

@@ -33,7 +33,7 @@ const Index = () => (
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
       <div className="container relative py-20 md:py-32 text-center max-w-3xl mx-auto">
         <span className="inline-block text-xs font-semibold tracking-wider uppercase text-primary mb-4 bg-primary/10 px-4 py-1.5 rounded-full">
-          Now delivering within Ikeja, Lagos
+          Now delivering within Lagos
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
           Restock your kitchen
@@ -41,7 +41,7 @@ const Index = () => (
           <span className="text-primary">without market stress</span>
         </h1>
         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-          Choose a curated food pack, customize it to your taste, and get fresh foodstuff delivered to your door in Ikeja.
+          Choose a curated food pack, customize it to your taste, and get fresh foodstuff delivered to your door in Lagos.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild size="lg" className="text-base px-8">
@@ -72,7 +72,7 @@ const Index = () => (
     <section className="border-y bg-secondary/30">
       <div className="container py-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
         {[
-          { icon: Truck, label: "Delivery within 24–48hrs in Ikeja" },
+          { icon: Truck, label: "Delivery within 24–48hrs in Lagos" },
           { icon: Shield, label: "Transparent pricing, no hidden fees" },
           { icon: Clock, label: "Order in under 5 minutes" },
         ].map(({ icon: Icon, label }) => (
@@ -135,7 +135,7 @@ const Index = () => (
       <div className="text-center mb-12">
         <h2 className="text-2xl md:text-3xl font-bold mb-3">What our customers say</h2>
         <p className="text-muted-foreground max-w-md mx-auto">
-          Real feedback from real people using Oja Box in Ikeja.
+          Real feedback from real people using Oja Box in Lagos.
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
@@ -143,7 +143,7 @@ const Index = () => (
           <div key={t.name} className="rounded-xl border bg-card p-6">
             <div className="flex gap-0.5 mb-3">
               {Array.from({ length: t.rating }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">"{t.text}"</p>

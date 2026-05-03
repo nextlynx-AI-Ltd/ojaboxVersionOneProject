@@ -3,22 +3,22 @@ import { Button } from "@/components/ui/button"
 
 const team = [
   {
-    name: "Oluwatobi Akano",
-    role: "Founder",
+    name: "Akano Oluwatobi",
+    role: "Founder & Product Lead",
     bio: "Born and raised in Lagos. Spent years understanding the supply chain before deciding to solve the market stress problem for busy professionals.",
     initials: "O.A.",
   },
   {
     name: "Timilehin Amolegbe",
-    role: "Developer",
+    role: " Frontend Engineering Lead",
     bio: "A developer who got tired of spending Saturdays at the market. Builds every part of the Oja Box experience with real Lagos users in mind.",
     initials: "T.A.",
   },
   {
-    name: "Lady Adeola",
+    name: " Adeola  Adejumo ",
     role: "Operations Manager",
-    bio: "Lagos market veteran with 15+ years of experience. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
-    initials: "L.A.",
+    bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
+    initials: "A.A.",
   },
   {
     name: "Daniel Chinoso",
@@ -55,10 +55,10 @@ const About = () => (
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
           We're making kitchen restocking
           <br />
-          <span className="text-primary">stress-free in Ikeja</span>
+          <span className="text-primary">stress-free in Lagos</span>
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
-          Oja Box started from a simple frustration — spending hours at the market every week.
+          Oja Box started from a simple frustration. Spending hours at the market every week.
           We built a better way: curated food packs, honest pricing, and delivery you can count on.
         </p>
       </div>
@@ -74,7 +74,7 @@ const About = () => (
           restocking the kitchen was always the last thing anyone wanted to do.
         </p>
         <p>
-          We tried existing delivery apps but they felt overwhelming — hundreds of products,
+          We tried existing delivery apps but they felt overwhelming. Hundreds of products,
           confusing categories, and prices that didn't add up. We didn't need a marketplace.
           We needed someone to just handle the restock.
         </p>
@@ -108,7 +108,7 @@ const About = () => (
       <div className="text-center mb-12">
         <h2 className="text-2xl font-bold mb-3">Meet the Team</h2>
         <p className="text-muted-foreground max-w-md mx-auto">
-          Real people, based in Ikeja, building a service we'd use ourselves.
+          Real people, building a service we'd use ourselves.
         </p>
       </div>
       <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
