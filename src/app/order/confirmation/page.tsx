@@ -1,6 +1,6 @@
 'use client'
-import { useState, useEffect } from "react"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { CheckCircle2, MessageCircle, Package, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,33 +9,23 @@ import { useOrder } from "@/context/OrderContext"
 
 const Confirmation = () => {
   const { confirmation } = useOrder()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   if (!confirmation) {
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-      const timer = setTimeout(() => setIsLoading(false), 100)
-      return () => clearTimeout(timer)
-      }, [])
-
-      if (isLoading) {
-        return (
-          <div className="container py-20 text-center">
-            <div className="h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
-          </div>
-        )
-      }
-
-      if (!confirmation) {
-        return (
-          <div className="container py-20 text-center">
-            <h1 className="text-2xl font-bold mb-4">No confirmation found</h1>
-            <Button asChild>
-              <Link href="/">Go home</Link>
-            </Button>
-          </div>
-        )
-      }
+    return (
+      <div className="container py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4">No confirmation found</h1>
+        <Button asChild>
+          <Link href="/">Go home</Link>
+        </Button>
+      </div>
+    )
   }
 
   const whatsappMessage = encodeURIComponent(
@@ -68,7 +58,9 @@ const Confirmation = () => {
           </div>
           <div>
             <p className="text-muted-foreground mb-1">Delivery Address</p>
-            <p className="font-semibold">{confirmation.delivery.address}, {confirmation.delivery.area}</p>
+            <p className="font-semibold">
+              {confirmation.delivery.address}, {confirmation.delivery.area}
+            </p>
           </div>
         </div>
       </div>
@@ -91,8 +83,8 @@ const Confirmation = () => {
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Button asChild variant="outline">
-          <a
-            href={`https://wa.me/2348139578438?text=${whatsappMessage}`}
+          
+            <a href={`https://wa.me/2348139578438?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
           >

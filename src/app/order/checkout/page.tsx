@@ -78,6 +78,22 @@ const Checkout = () => {
         }),
       })
 
+      // Send team notification email
+      await fetch("/api/send-notification", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderReference: response.reference,
+          customerName: form.name,
+          phoneNumber: form.phone,
+          deliveryAddress: form.address,
+          area: form.area,
+          packName: order.packName,
+          items: itemsSummary,
+          grandTotal,
+        }),
+      })
+
       setConfirmation({
         orderId: response.reference,
         packName: order.packName,

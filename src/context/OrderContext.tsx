@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, ReactNode } from "react"
 import { FoodItem } from "@/data/packs"
 
 export interface CartItem {
@@ -39,9 +39,25 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
   const [order, setOrderState] = useState<OrderData | null>(null)
   const [confirmation, setConfirmationState] = useState<ConfirmationData | null>(null)
 
+  // Load confirmation from sessionStorage on mount
+  useEffect(() => {
+    const saved = sessionStorage.getItem("ojabox-confirmation")
+    if (saved) {
+      setConfirmationState(JSON.parse(saved))
+    }
+  }, [])
+
   const setOrder = (order: OrderData) => setOrderState(order)
-  const setConfirmation = (data: ConfirmationData) => setConfirmationState(data)
-  const clearOrder = () => setOrderState(null)
+
+  const setConfirmation = (data: ConfirmationData) => {
+    setConfirmationState(data)
+    sessionStorage.setItem("ojabox-confirmation", JSON.stringify(data))
+  }
+
+  const clearOrder = () => {
+    setOrderState(null)
+    sessionStorage.removeItem("ojabox-confirmation")
+  }
 
   return (
     <OrderContext.Provider value={{ order, confirmation, setOrder, setConfirmation, clearOrder }}>
