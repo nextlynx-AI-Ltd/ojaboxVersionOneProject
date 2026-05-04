@@ -36,10 +36,10 @@ export interface Pack {
 
 export const allItems: FoodItem[] = [
   // Staples
-  { id: "rice", name: "Rice (Local)", unit: "5kg bag", pricePerUnit: 7500, category: "staples", image: "/assets/items/rice.jpg", description: "Premium Nigerian long-grain rice" },
-  { id: "garri", name: "Garri (Ijebu)", unit: "2kg bag", pricePerUnit: 2000, category: "staples", image: "/assets/items/garri.jpg", description: "Crispy Ijebu garri for eba or soaking" },
-  { id: "beans", name: "Beans", unit: "2kg bag", pricePerUnit: 4000, category: "staples", image: "/assets/items/beans.jpg", description: "Clean, stone-free honey beans" },
-  { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber of white yam" },
+  { id: "rice", name: "Rice", unit: "5kg bag", pricePerUnit: 7500, category: "staples", image: "/assets/items/rice.jpg", description: "Premium rice" },
+  { id: "garri", name: "Garri", unit: "2kg bag", pricePerUnit: 2000, category: "staples", image: "/assets/items/garri.jpg", description: "Garri for eba or soaking" },
+  { id: "beans", name: "Beans", unit: "2kg bag", pricePerUnit: 4000, category: "staples", image: "/assets/items/beans.jpg", description: "Clean beans" },
+  { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber yam" },
   { id: "elubo", name: "Yam Flour (Elubo)", unit: "1kg bag", pricePerUnit: 2500, category: "staples", image: "/assets/items/elubo.jpg", description: "Ground yam flour for amala" },
   { id: "semo", name: "Semovita", unit: "1kg pack", pricePerUnit: 1500, category: "staples", image: "/assets/items/semo.jpg", description: "Smooth semovita for swallow" },
 
@@ -47,7 +47,6 @@ export const allItems: FoodItem[] = [
   { id: "spaghetti", name: "Spaghetti", unit: "pack", pricePerUnit: 900, category: "quick-foods", image: "/assets/items/spaghetti.jpg", description: "Quality spaghetti pasta" },
   { id: "macaroni", name: "Macaroni", unit: "pack", pricePerUnit: 800, category: "quick-foods", image: "/assets/items/macaroni.jpg", description: "Elbow macaroni pasta" },
   { id: "noodles", name: "Noodles", unit: "pack", pricePerUnit: 250, category: "quick-foods", image: "/assets/items/noodles.jpg", description: "Instant noodles" },
-  { id: "oats", name: "Oats", unit: "500g pack", pricePerUnit: 1200, category: "quick-foods", image: "/assets/items/oats.jpg", description: "Rolled oats for breakfast" },
 
   // Cooking Essentials
   { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 300, category: "cooking-essentials", image: "/assets/items/salt.jpg", description: "Iodized table salt" },
@@ -87,7 +86,7 @@ export const packs: Pack[] = [
     items: [
       { item: getItem("rice"), quantity: 1, min: 1, max: 2 },
       { item: getItem("beans"), quantity: 1, min: 0, max: 2 },
-      { item: getItem("garri"), quantity: 1, min: 0, max: 2 },
+      { item: getItem("garri"), quantity: 1, min: 1, max: 2 },
       { item: getItem("spaghetti"), quantity: 2, min: 1, max: 4 },
       { item: getItem("noodles"), quantity: 5, min: 2, max: 10 },
       { item: getItem("veg-oil"), quantity: 1, min: 1, max: 2 },
@@ -190,6 +189,68 @@ export const packs: Pack[] = [
     ],
   },
 ];
+
+// Mainland Lagos areas with specific delivery fees
+export const MAINLAND_AREAS: Record<string, number> = {
+  "Ikeja": 3000,
+  "Ogba": 2500,
+  "Agege": 2500,
+  "Ifako-Ijaiye": 2500,
+  "Isolo": 3000,
+  "Allen": 3000,
+  "Maryland": 3000,
+  "Gbagada": 3000,
+  "Ketu": 3000,
+  "Bariga": 3000,
+  "Yaba": 4000,
+  "Surulere": 4000,
+  "Mushin": 3000,
+  "Shomolu": 3000,
+  "Kosofe": 3000,
+  "Ejigbo": 3000,
+  "Somolu": 2800,
+};
+
+// Island Lagos areas - Fixed price of 4500
+export const ISLAND_AREAS = [
+  "Lekki",
+  "VI",
+  "Victoria Island",
+  "Ikoyi",
+  "Ajah",
+  "Banana Island",
+  "Oniru",
+  "Eko Atlantic",
+];
+
+export const ALL_LOCATIONS = [
+  ...Object.keys(MAINLAND_AREAS),
+  ...ISLAND_AREAS
+].sort();
+
+export const isValidLagosArea = (areaInput: string): boolean => {
+  if (!areaInput) return false;
+  const normalizedInput = areaInput.toLowerCase().trim();
+  
+  return ALL_LOCATIONS.some(loc => loc.toLowerCase() === normalizedInput);
+};
+
+export const getDeliveryFee = (area: string): number => {
+  const normalizedArea = area.toLowerCase().trim();
+  
+  // Check if it's an island area
+  if (ISLAND_AREAS.some(a => a.toLowerCase() === normalizedArea)) {
+    return 4500;
+  }
+  
+  // Check mainland areas
+  const mainlandKey = Object.keys(MAINLAND_AREAS).find(key => key.toLowerCase() === normalizedArea);
+  if (mainlandKey) {
+    return MAINLAND_AREAS[mainlandKey];
+  }
+  
+  return 3000;
+};
 
 export const formatPrice = (amount: number) =>
   "₦" + amount.toLocaleString("en-NG");

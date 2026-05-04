@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { CheckCircle2, MessageCircle, Package, Clock } from "lucide-react"
+import { CheckCircle2, MessageCircle, Package, Clock, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
@@ -15,8 +15,21 @@ const Confirmation = () => {
     setMounted(true)
   }, [])
 
+  //  Initial mounting check to prevent Hydration mismatch
   if (!mounted) return null
 
+  //  While mounted is true, wait a moment for context to resolve 
+  // If confirmation is undefined/null right at mount, show a loader 
+  if (confirmation === undefined) {
+    return (
+      <div className="container py-20 flex flex-col items-center justify-center text-center">
+        <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
+        <p className="text-muted-foreground">Loading your order details...</p>
+      </div>
+    )
+  }
+
+  // 3. Now, if it's definitely null after the context check
   if (!confirmation) {
     return (
       <div className="container py-20 text-center">
@@ -83,8 +96,7 @@ const Confirmation = () => {
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Button asChild variant="outline">
-          
-            <a href={`https://wa.me/2348139578438?text=${whatsappMessage}`}
+          <a href={`https://wa.me/2348139578438?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
           >

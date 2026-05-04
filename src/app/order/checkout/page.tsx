@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, Shield, Truck, CreditCard, Lock, Clock } from "lucide-react"
 import Image from "next/image"
@@ -8,20 +8,48 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { formatPrice } from "@/data/packs"
+import { formatPrice, isValidLagosArea, getDeliveryFee, ALL_LOCATIONS } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
 
-const DELIVERY_FEE = 2500
 const PACKAGING_FEE = 500
-const SERVICE_CHARGE = 300
+const SERVICE_CHARGE = 1500
 
 const Checkout = () => {
   const router = useRouter()
   const { order, setConfirmation, clearOrder } = useOrder()
   const [form, setForm] = useState({ name: "", phone: "", address: "", area: "" })
   const [submitting, setSubmitting] = useState(false)
+  const [areaError, setAreaError] = useState("")
+  const [showSuggestions, setShowSuggestions] = useState(false)
 
-  const grandTotal = order ? order.total + DELIVERY_FEE + PACKAGING_FEE + SERVICE_CHARGE : 0
+  // Filter locations based on user input
+  const suggestions = useMemo(() => {
+    if (!form.area) return []
+    return ALL_LOCATIONS.filter(loc => 
+      loc.toLowerCase().includes(form.area.toLowerCase()) && 
+      loc.toLowerCase() !== form.area.toLowerCase()
+    )
+  }, [form.area])
+
+  const deliveryFee = order && form.area ? getDeliveryFee(form.area) : 0
+  const grandTotal = order ? order.total + deliveryFee + PACKAGING_FEE + SERVICE_CHARGE : 0
+
+  const handleAreaChange = (value: string) => {
+    setForm({ ...form, area: value })
+    setShowSuggestions(true)
+    
+    if (value && !isValidLagosArea(value)) {
+      setAreaError("Please select a valid Lagos area from the suggestions.")
+    } else {
+      setAreaError("")
+    }
+  }
+
+  const selectArea = (loc: string) => {
+    setForm({ ...form, area: loc })
+    setAreaError("")
+    setShowSuggestions(false)
+  }
 
   if (!order) {
     return (
@@ -34,12 +62,11 @@ const Checkout = () => {
     )
   }
 
-  const isValid = form.name && form.phone && form.address && form.area
+  const isValid = form.name && form.phone && form.address && form.area && isValidLagosArea(form.area)
 
   const handlePaymentSuccess = async (response: { reference: string }) => {
     setSubmitting(true)
     try {
-      // Verify payment on server
       const verifyRes = await fetch("/api/verify-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -58,7 +85,6 @@ const Checkout = () => {
         .map((ci) => `${ci.item.name} x${ci.quantity}`)
         .join(", ")
 
-      // Save to Airtable
       await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -71,14 +97,13 @@ const Checkout = () => {
           packName: order.packName,
           items: itemsSummary,
           subtotal: order.total,
-          deliveryFee: DELIVERY_FEE,
+          deliveryFee,
           packagingFee: PACKAGING_FEE,
           serviceCharge: SERVICE_CHARGE,
           grandTotal,
         }),
       })
 
-      // Send team notification email
       await fetch("/api/send-notification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -164,9 +189,9 @@ const Checkout = () => {
                   <Label htmlFor="name">Full Name</Label>
                   <Input
                     id="name"
+                    required
                     value={form.name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setForm({ ...form, name: e.target.value })}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Amaka Johnson"
                   />
                 </div>
@@ -174,9 +199,9 @@ const Checkout = () => {
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
                     id="phone"
+                    required
                     value={form.phone}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setForm({ ...form, phone: e.target.value })}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="0801 234 5678"
                   />
                 </div>
@@ -184,21 +209,43 @@ const Checkout = () => {
                   <Label htmlFor="address">Delivery Address</Label>
                   <Input
                     id="address"
+                    required
                     value={form.address}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setForm({ ...form, address: e.target.value })}
+                    onChange={(e) => setForm({ ...form, address: e.target.value })}
                     placeholder="12 Toyin Street, Ikeja"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="area">Area</Label>
+                
+                {/* Searchable LGA Field */}
+                <div className="space-y-2 relative">
+                  <Label htmlFor="area">Local Government Area (Lagos Only)</Label>
                   <Input
                     id="area"
+                    required
+                    autoComplete="off"
                     value={form.area}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setForm({ ...form, area: e.target.value })}
-                    placeholder="Allen, Ogba, Maryland..."
+                    onChange={(e) => handleAreaChange(e.target.value)}
+                    onFocus={() => setShowSuggestions(true)}
+                    onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                    placeholder="e.g. Ikeja, Lekki..."
+                    className={areaError ? "border-red-500" : ""}
                   />
+                  
+                  {showSuggestions && suggestions.length > 0 && (
+                    <div className="absolute z-50 w-full mt-1 bg-white border rounded-md shadow-lg max-h-48 overflow-y-auto">
+                      {suggestions.map((loc) => (
+                        <div
+                          key={loc}
+                          className="px-4 py-2 hover:bg-primary/10 cursor-pointer text-sm"
+                          onClick={() => selectArea(loc)}
+                        >
+                          {loc}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {areaError && <p className="text-sm text-red-500 mt-1">{areaError}</p>}
                 </div>
               </div>
             </div>
@@ -220,18 +267,6 @@ const Checkout = () => {
                 </span>
                 <span>Card, Bank Transfer, or USSD</span>
               </div>
-            </div>
-
-            <div className="rounded-xl bg-primary/5 border border-primary/10 p-4 flex flex-wrap gap-4 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5 text-primary" /> Delivery within 24–48 hours in Ikeja
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Shield className="h-3.5 w-3.5 text-primary" /> WhatsApp confirmation after payment
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Truck className="h-3.5 w-3.5 text-primary" /> Tracked delivery to your door
-              </span>
             </div>
 
             <Button
@@ -275,7 +310,7 @@ const Checkout = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Delivery</span>
-                  <span>{formatPrice(DELIVERY_FEE)}</span>
+                  <span>{formatPrice(deliveryFee)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Packaging</span>

@@ -40,7 +40,7 @@ const Footer = () => (
         </a>
         <div className="flex gap-3 mb-4">
           <a
-            href="https://twitter.com/ojabox"
+            href="https://x.com/OJA_box?s=20"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
@@ -49,7 +49,7 @@ const Footer = () => (
             <X className="h-4 w-4" />
           </a>
           <a
-            href="mailto:hello@ojabox.com"
+            href="mailto:ojabox55@gmail.com"
             className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
             title="Email us"
           >
