@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
       orderReference,
       customerName,
       phoneNumber,
+      customerEmail,
       deliveryAddress,
       area,
       packName,
@@ -38,6 +39,10 @@ export async function POST(req: NextRequest) {
               <tr>
                 <td style="padding: 8px 0; color: #666;">Phone Number</td>
                 <td style="padding: 8px 0;">${phoneNumber}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #666;">Email</td>
+                <td style="padding: 8px 0;">${customerEmail || "Not provided"}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #666;">Delivery Address</td>

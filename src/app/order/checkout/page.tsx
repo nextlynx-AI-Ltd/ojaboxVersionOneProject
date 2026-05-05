@@ -17,7 +17,7 @@ const SERVICE_CHARGE = 1500
 const Checkout = () => {
   const router = useRouter()
   const { order, setConfirmation, clearOrder } = useOrder()
-  const [form, setForm] = useState({ name: "", phone: "", address: "", area: "" })
+  const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", area: "" })
   const [submitting, setSubmitting] = useState(false)
   const [areaError, setAreaError] = useState("")
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -92,6 +92,7 @@ const Checkout = () => {
           orderReference: response.reference,
           customerName: form.name,
           phoneNumber: form.phone,
+          customerEmail: form.email,
           deliveryAddress: form.address,
           area: form.area,
           packName: order.packName,
@@ -152,6 +153,7 @@ const Checkout = () => {
           { display_name: "Customer Name", variable_name: "customer_name", value: form.name },
           { display_name: "Phone", variable_name: "phone", value: form.phone },
           { display_name: "Address", variable_name: "address", value: form.address },
+          { display_name: "Email", variable_name: "email", value: form.email },
         ]
       },
       callback: (response: { reference: string }) => {
@@ -203,6 +205,20 @@ const Checkout = () => {
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="0801 234 5678"
+                  />
+                </div>
+                <div className="sm:col-span-2 space-y-2">
+                  <Label htmlFor="email">
+                    Email address 
+                    <span className="text-muted-foreground font-normal ml-1">(optional — for order updates)</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setForm({ ...form, email: e.target.value })}
+                    placeholder="amaka@gmail.com"
                   />
                 </div>
                 <div className="sm:col-span-2 space-y-2">
