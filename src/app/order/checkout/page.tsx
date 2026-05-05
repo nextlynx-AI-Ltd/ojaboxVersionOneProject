@@ -285,6 +285,13 @@ const Checkout = () => {
               </div>
             </div>
 
+            <p className="text-xs text-muted-foreground">
+              By placing this order you agree to our{" "}
+              <Link href="/refund-policy" className="text-primary hover:underline">
+                refund policy
+              </Link>
+            </p>
+
             <Button
               type="submit"
               size="lg"

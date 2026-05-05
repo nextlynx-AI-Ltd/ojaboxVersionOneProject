@@ -25,6 +25,26 @@ const Footer = () => (
           <li><Link href="/order" className="hover:text-foreground transition-colors">Browse Packs</Link></li>
           <li><Link href="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
           <li><a href="#how-it-works" className="hover:text-foreground transition-colors">How it Works</a></li>
+          <li>
+            <Link href="/refund-policy" className="hover:text-foreground transition-colors">
+              Refund Policy
+            </Link>
+          </li>
+          <li>
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+          </li>
+          <li>
+            <Link href="/terms-of-service" className="hover:text-foreground transition-colors">
+              Terms of Service
+            </Link>
+          </li>
+          <li>
+            <Link href="/delivery-policy" className="hover:text-foreground transition-colors">
+              Delivery Policy
+            </Link>
+          </li>
         </ul>
       </div>
       <div>
