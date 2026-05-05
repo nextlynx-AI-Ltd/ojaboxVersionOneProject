@@ -293,6 +293,19 @@ const Checkout = () => {
             >
               {submitting ? "Processing..." : `Pay ${formatPrice(grandTotal)}`}
             </Button>
+
+            <div className="rounded-xl bg-primary/5 border border-primary/10 p-4 flex flex-wrap gap-4 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 text-primary" /> Delivery within 24–48 hours
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Shield className="h-3.5 w-3.5 text-primary" /> WhatsApp confirmation after payment
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Truck className="h-3.5 w-3.5 text-primary" /> Delivery to your door
+              </span>
+            </div>
+            
           </form>
 
           {/* Order Summary */}
