@@ -209,6 +209,17 @@ export const MAINLAND_AREAS: Record<string, number> = {
   "Kosofe": 3000,
   "Ejigbo": 3000,
   "Somolu": 2800,
+  "Ojodu": 3000,
+  "Festac": 3500,
+  "Egbeda": 3000,
+  "ikotun": 3000,
+  "ipaja": 3000,
+  "Magodo": 3500,
+  "Ikorodu": 4000,
+  "Abule Egba": 3000,
+  "Ojo": 4000,
+  
+
 };
 
 // Island Lagos areas - Fixed price of 4500
@@ -221,6 +232,7 @@ export const ISLAND_AREAS = [
   "Banana Island",
   "Oniru",
   "Eko Atlantic",
+  "Sangotedo",
 ];
 
 export const ALL_LOCATIONS = [
