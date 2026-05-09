@@ -1,5 +1,6 @@
-import PackCard from "@/components/PackCard"
-import { packs } from "@/data/packs"
+"üse client";
+import PackCard from "@/components/PackCard";
+import { packs } from "@/data/packs";
 
 const Packs = () => (
   <div className="container py-12 md:py-16">
@@ -15,6 +16,6 @@ const Packs = () => (
       ))}
     </div>
   </div>
-)
+);
 
-export default Packs
+export default Packs;
