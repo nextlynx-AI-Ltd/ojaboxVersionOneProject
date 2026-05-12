@@ -15,13 +15,22 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json()
 
+    // Log full response to see what Paystack returns
+    console.log("Paystack verify response:", JSON.stringify(data))
+
+    if (!data || !data.data) {
+      console.error("Paystack response missing data:", data)
+      return NextResponse.json({ verified: false, reason: "no_data" })
+    }
+
     if (data.data.status === "success") {
       return NextResponse.json({ verified: true })
     } else {
-      return NextResponse.json({ verified: false })
+      console.error("Payment not successful:", data.data.status)
+      return NextResponse.json({ verified: false, reason: data.data.status })
     }
   } catch (error) {
     console.error("Paystack verification error:", error)
-    return NextResponse.json({ verified: false }, { status: 500 })
+    return NextResponse.json({ verified: false, reason: "exception" }, { status: 500 })
   }
 }

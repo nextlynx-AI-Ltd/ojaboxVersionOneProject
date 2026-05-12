@@ -1,5 +1,6 @@
 import { MapPin, Heart, ShieldCheck, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const team = [
   {
@@ -7,24 +8,35 @@ const team = [
     role: "Founder & Product Lead",
     bio: "Born and raised in Lagos. Spent years understanding the supply chain before deciding to solve the market stress problem for busy professionals.",
     initials: "O.A.",
+    image: "/assets/team/tobi.jpeg",
   },
   {
     name: "Timilehin Amolegbe",
-    role: " Frontend Engineering Lead",
+    role: " Cofounder",
     bio: "A developer who got tired of spending Saturdays at the market. Builds every part of the Oja Box experience with real Lagos users in mind.",
     initials: "T.A.",
+    image: "/assets/team/timmy1.jpeg",
   },
   {
     name: " Adeola  Adejumo ",
     role: "Operations Manager",
     bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
     initials: "A.A.",
+    image: "/assets/team/adeola.jpeg",
   },
   {
     name: "Daniel Chinoso",
     role: "Graphic Designer",
     bio: "The creative mind behind Oja Box's look and feel. Daniel's designs capture the vibrant, fresh, and approachable spirit of our brand.",
     initials: "D.C.",
+    image: "/assets/team/daniel.jpeg",
+  },
+  {
+    name: "Erumosele Osaireme",
+    role: "Digital Marketer",
+    bio: "Erumosele crafts our online presence and connects us with the Lagos community. She's passionate about sharing our story and values with the world.",
+    initials: "E.O.",
+    image: "/assets/team/erumosele.jpeg",
   },
 ]
 
@@ -115,7 +127,7 @@ const About = () => (
         {team.map((member) => (
           <div key={member.name} className="rounded-xl border bg-card p-6 text-center">
             <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-primary">{member.initials}</span>
+                <Image src={member.image} alt={member.initials} width={80} height={80} className="rounded-full" />
             </div>
             <h3 className="font-semibold text-lg">{member.name}</h3>
             <p className="text-sm text-primary font-medium mb-3">{member.role}</p>
