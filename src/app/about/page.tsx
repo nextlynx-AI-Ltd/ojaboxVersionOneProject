@@ -20,9 +20,9 @@ const team = [
   {
     name: " Adeola  Adejumo ",
     role: "Operations Manager",
-    bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
+    bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Lagos.",
     initials: "A.A.",
-    image: "/assets/team/adeola.jpeg",
+    image: "/assets/team/adeola1.jpeg",
   },
   {
     name: "Daniel Chinoso",
