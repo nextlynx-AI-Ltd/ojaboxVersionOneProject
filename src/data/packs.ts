@@ -51,7 +51,7 @@ export const allItems: FoodItem[] = [
   // Cooking Essentials
   { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 500, category: "cooking-essentials", image: "/assets/items/salt.png", description: "Dangote table salt" },
   { id: "seasoning-cubes", name: "Seasoning Cubes", unit: "pack", pricePerUnit: 350, category: "cooking-essentials", image: "/assets/items/seasoning-cube.jpg", description: "Chicken Flavour seasoning cubes" },
-  { id: "palm-oil", name: "Palm Oil", unit: "1L bottle", pricePerUnit: 2000, category: "cooking-essentials", image: "/assets/items/palm-oil.jpg", description: "Fresh, unadulterated palm oil" },
+  { id: "palm-oil", name: "Palm Oil", unit: "1L bottle", pricePerUnit: 1600, category: "cooking-essentials", image: "/assets/items/palm-oil.jpg", description: "Fresh, unadulterated palm oil" },
   { id: "veg-oil", name: "Vegetable Oil", unit: "1L bottle", pricePerUnit: 4200, category: "cooking-essentials", image: "/assets/items/veg-oil.jpg", description: "King's vegetable cooking oil" },
   { id: "tomato-paste", name: "Tomato Paste", unit: "sachet roll", pricePerUnit: 900, category: "cooking-essentials", image: "/assets/items/tomato-paste.png", description: "Gino tomato paste" },
   { id: "ground-pepper", name: "Ground Pepper (Ata Gungun)", unit: "sachet roll", pricePerUnit: 800, category: "cooking-essentials", image: "/assets/items/ground-pepper.jpg", description: "Hot pepper ground pepper" },
