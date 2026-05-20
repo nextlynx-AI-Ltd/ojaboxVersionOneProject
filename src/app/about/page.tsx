@@ -20,13 +20,13 @@ const team = [
   {
     name: " Adeola  Adejumo ",
     role: "Operations Manager",
-    bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Ikeja.",
+    bio: "Market veteran. She ensures our packs are filled with the freshest items and that deliveries run smoothly across Lagos.",
     initials: "A.A.",
-    image: "/assets/team/adeola.jpeg",
+    image: "/assets/team/adeola1.jpeg",
   },
   {
     name: "Daniel Chinoso",
-    role: "Graphic Designer",
+    role: "Designer",
     bio: "The creative mind behind Oja Box's look and feel. Daniel's designs capture the vibrant, fresh, and approachable spirit of our brand.",
     initials: "D.C.",
     image: "/assets/team/daniel.jpeg",

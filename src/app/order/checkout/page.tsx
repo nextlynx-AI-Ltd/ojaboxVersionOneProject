@@ -210,7 +210,7 @@ const Checkout = () => {
                 <div className="sm:col-span-2 space-y-2">
                   <Label htmlFor="email">
                     Email address 
-                    <span className="text-muted-foreground font-normal ml-1">(optional — for order updates)</span>
+                    <span className="text-muted-foreground font-normal ml-1">(optional)</span>
                   </Label>
                   <Input
                     id="email"
