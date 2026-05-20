@@ -37,7 +37,7 @@ export interface Pack {
 export const allItems: FoodItem[] = [
   // Staples
   { id: "rice", name: "Rice", unit: "5kg bag", pricePerUnit: 7500, category: "staples", image: "/assets/items/rice.jpeg", description: "Premium rice" },
-  { id: "garri", name: "Garri", unit: "5kg bag", pricePerUnit: 1800, category: "staples", image: "/assets/items/garri.jpeg", description: "Garri for eba or soaking" },
+  { id: "garri", name: "Garri", unit: "5kg bag", pricePerUnit: 1800, category: "staples", image: "/assets/items/Garri.jpeg", description: "Garri for eba or soaking" },
   { id: "beans", name: "Beans", unit: "2.5kg bag", pricePerUnit: 4000, category: "staples", image: "/assets/items/beans.jpeg", description: "Clean beans" },
   { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber yam" },
   { id: "elubo", name: "Yam Flour (Elubo)", unit: "2.5kg bag", pricePerUnit: 3800, category: "staples", image: "/assets/items/elubo.jpg", description: "Ground yam flour for amala" },
