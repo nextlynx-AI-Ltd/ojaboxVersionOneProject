@@ -26,7 +26,7 @@ const team = [
   },
   {
     name: "Daniel Chinoso",
-    role: "Graphic Designer",
+    role: "Designer",
     bio: "The creative mind behind Oja Box's look and feel. Daniel's designs capture the vibrant, fresh, and approachable spirit of our brand.",
     initials: "D.C.",
     image: "/assets/team/daniel.jpeg",

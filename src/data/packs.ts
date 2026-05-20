@@ -53,14 +53,14 @@ export const allItems: FoodItem[] = [
   { id: "seasoning-cubes", name: "Seasoning Cubes", unit: "pack", pricePerUnit: 350, category: "cooking-essentials", image: "/assets/items/seasoning-cube.jpg", description: "Chicken Flavour seasoning cubes" },
   { id: "palm-oil", name: "Palm Oil", unit: "1L bottle", pricePerUnit: 2000, category: "cooking-essentials", image: "/assets/items/palm-oil.jpg", description: "Fresh, unadulterated palm oil" },
   { id: "veg-oil", name: "Vegetable Oil", unit: "1L bottle", pricePerUnit: 4200, category: "cooking-essentials", image: "/assets/items/veg-oil.jpg", description: "King's vegetable cooking oil" },
-  { id: "tomato-paste", name: "Tomato Paste", unit: "sachet", pricePerUnit: 200, category: "cooking-essentials", image: "/assets/items/tomato-paste.png", description: "Gino tomato paste" },
+  { id: "tomato-paste", name: "Tomato Paste", unit: "sachet roll", pricePerUnit: 900, category: "cooking-essentials", image: "/assets/items/tomato-paste.png", description: "Gino tomato paste" },
   { id: "ground-pepper", name: "Ground Pepper (Ata Gungun)", unit: "sachet roll", pricePerUnit: 800, category: "cooking-essentials", image: "/assets/items/ground-pepper.jpg", description: "Hot pepper ground pepper" },
   { id: "seasoning-curry", name: "Seasoning Curry", unit: "sachet roll", pricePerUnit: 600, category: "cooking-essentials", image: "/assets/items/curry.jpeg", description: "Gino Curry seasoning set" },
   { id: "seasoning-thyme", name: "Seasoning (Thyme)", unit: "sachet roll", pricePerUnit: 600, category: "cooking-essentials", image: "/assets/items/thyme.jpg", description: "Gino Thyme seasoning set" },
   { id: "onions", name: "Onions", unit: "piece", pricePerUnit: 200, category: "cooking-essentials", image: "/assets/items/onions.jpg", description: "Fresh Big-sized onions" },
 
   // Extras
-  { id: "iru", name: "Locust Beans (Iru)", unit: "portion", pricePerUnit: 500, category: "extras", image: "/assets/items/iru.jpg", description: "Fermented locust beans for soups" },
+  { id: "iru", name: "Locust Beans (Iru)", unit: "portion", pricePerUnit: 1200, category: "extras", image: "/assets/items/iru.jpg", description: "Fermented locust beans for soups" },
   { id: "eggs", name: "Eggs", unit: "crate (6)", pricePerUnit: 1400, category: "extras", image: "/assets/items/eggs.png", description: "Fresh chicken eggs" },
   { id: "plantain", name: "Plantain", unit: "piece", pricePerUnit: 400, category: "extras", image: "/assets/items/plantain.jpg", description: "Ripe plantain for frying or boiling" },
   { id: "potatoes", name: "Potatoes", unit: "portion", pricePerUnit: 1500, category: "extras", image: "/assets/items/potatoes.jpg", description: "Fresh Irish potatoes" },
