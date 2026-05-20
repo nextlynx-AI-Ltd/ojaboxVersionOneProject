@@ -42,14 +42,16 @@ export const allItems: FoodItem[] = [
   { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber yam" },
   { id: "elubo", name: "Yam Flour (Elubo)", unit: "2.5kg bag", pricePerUnit: 3800, category: "staples", image: "/assets/items/elubo.jpg", description: "Ground yam flour for amala" },
   { id: "semo", name: "Semovita", unit: "1kg pack", pricePerUnit: 1800, category: "staples", image: "/assets/items/semovita.png", description: "Smooth semovita for swallow" },
+  { id: "poundo-yam", name: "Poundo Yam Flour", unit: "900g pack", pricePerUnit: 4000, category: "staples", image: "/assets/items/poundo-yam.jpg", description: "Smooth poundo yam flour" },
 
   // Quick Foods
   { id: "spaghetti", name: "Spaghetti", unit: "pack", pricePerUnit: 1000, category: "quick-foods", image: "/assets/items/spaghetti.jpg", description: "Golden Penny spaghetti pasta" },
   { id: "macaroni", name: "Macaroni", unit: "pack", pricePerUnit: 1000, category: "quick-foods", image: "/assets/items/macaroni.jpg", description: "Golden Penny macaroni pasta" },
   { id: "noodles", name: "Noodles", unit: "pack", pricePerUnit: 250, category: "quick-foods", image: "/assets/items/noodles.jpeg", description: "Indomie Instant noodles" },
+  { id: "bean-flour", name: "Bean Flour", unit: "500g", pricePerUnit: 3100, category: "quick-foods", image: "/assets/items/bean-flour.jpg", description: "Bean flour for moi moi and akara" },
 
   // Cooking Essentials
-  { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 500, category: "cooking-essentials", image: "/assets/items/salt.png", description: "Dangote table salt" },
+  { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 300, category: "cooking-essentials", image: "/assets/items/salt.png", description: "Dangote table salt" },
   { id: "seasoning-cubes", name: "Seasoning Cubes", unit: "pack", pricePerUnit: 350, category: "cooking-essentials", image: "/assets/items/seasoning-cube.jpg", description: "Chicken Flavour seasoning cubes" },
   { id: "palm-oil", name: "Palm Oil", unit: "1L bottle", pricePerUnit: 1600, category: "cooking-essentials", image: "/assets/items/palm-oil.jpg", description: "Fresh, unadulterated palm oil" },
   { id: "veg-oil", name: "Vegetable Oil", unit: "1L bottle", pricePerUnit: 4200, category: "cooking-essentials", image: "/assets/items/veg-oil.jpg", description: "King's vegetable cooking oil" },
@@ -72,6 +74,7 @@ export const allItems: FoodItem[] = [
 //   { id: "tea-coffee", name: "Tea / Coffee", unit: "pack", pricePerUnit: 600, category: "extras", image: "/assets/items/tea-coffee.jpg", description: "Lipton tea or instant coffee" },
   { id: "custard", name: "Custard", unit: "pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/custard.jpg", description: "Custard powder for breakfast" },
   { id: "pap", name: "Pap (Ogi)", unit: "portion", pricePerUnit: 800, category: "extras", image: "/assets/items/pap.jpg", description: "Nigerian corn pap" },
+  { id: "butter", name: "Butter", unit: "100g pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/butter.jpg", description: "Fresh butter" },
 ];
 
 const getItem = (id: string) => allItems.find((i) => i.id === id)!;
