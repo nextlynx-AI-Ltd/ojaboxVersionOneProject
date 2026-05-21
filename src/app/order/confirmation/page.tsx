@@ -100,7 +100,7 @@ const Confirmation = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageCircle className="h-4 w-4" /> Contact us on WhatsApp
+            <MessageCircle className="h-4 w-4" /> Confirm order on WhatsApp
           </a>
         </Button>
         <Button asChild>

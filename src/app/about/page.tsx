@@ -32,7 +32,7 @@ const team = [
     image: "/assets/team/daniel.jpeg",
   },
   {
-    name: "Erumosele Osaireme",
+    name: "Eromosele Osariemen",
     role: "Digital Marketer",
     bio: "Erumosele crafts our online presence and connects us with the Lagos community. She's passionate about sharing our story and values with the world.",
     initials: "E.O.",

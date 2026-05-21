@@ -63,7 +63,7 @@ const Index = () => (
               </div>
             ))}
           </div>
-          <span>Trusted by households in Ikeja, Lagos</span>
+          <span>Trusted by households in Lagos</span>
         </div>
       </div>
     </section>
