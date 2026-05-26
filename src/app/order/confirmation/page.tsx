@@ -96,7 +96,7 @@ const Confirmation = () => {
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Button asChild variant="outline">
-          <a href={`https://wa.me/2348139578438?text=${whatsappMessage}`}
+          <a href={`https://wa.me/2349067634581?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
           >
