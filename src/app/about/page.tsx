@@ -145,7 +145,7 @@ const About = () => (
           We're always happy to chat. Reach out on WhatsApp and we'll respond within minutes.
         </p>
         <Button asChild size="lg">
-          <a href="https://wa.me/2348000000000" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/2349067634581" target="_blank" rel="noopener noreferrer">
             <MessageCircle className="h-4 w-4" /> Chat with us on WhatsApp
           </a>
         </Button>

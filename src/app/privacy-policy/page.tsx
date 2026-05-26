@@ -158,7 +158,7 @@ const PrivacyPolicy = () => (
           Reach out to us on WhatsApp and we'll respond within 7 business days.
         </p>
         
-          <a href="https://wa.me/2348000000000"
+          <a href="https://wa.me/2349067634581"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"

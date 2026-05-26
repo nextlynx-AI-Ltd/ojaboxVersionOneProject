@@ -76,7 +76,7 @@ const Footer = () => (
       <div>
         <h4 className="font-semibold text-sm mb-3">Need Help?</h4>
         
-          <a href="https://wa.me/2348139578438"
+          <a href="https://wa.me/2349067634581"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline mb-4 block"
