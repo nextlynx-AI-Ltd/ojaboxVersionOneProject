@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { formatPrice, isValidLagosArea, getDeliveryFee, ALL_LOCATIONS } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
 
-const PACKAGING_FEE = 500
+const PACKAGING_FEE = 1000
 const SERVICE_CHARGE = 1500
 
 const Checkout = () => {
@@ -21,6 +21,38 @@ const Checkout = () => {
   const [submitting, setSubmitting] = useState(false)
   const [areaError, setAreaError] = useState("")
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const validateForm = () => {
+  const errors: Record<string, string> = {}
+
+  // Name validation
+  const nameParts = form.name.trim().split(" ").filter(Boolean)
+  if (nameParts.length < 2) {
+    errors.name = "Please enter your full name (first and last name)"
+  }
+  if (/\d/.test(form.name)) {
+    errors.name = "Name cannot contain numbers"
+  }
+
+  // Phone validation
+  const phoneClean = form.phone.replace(/\s/g, "")
+  if (!/^0[789][01]\d{8}$/.test(phoneClean)) {
+    errors.phone = "Please enter a valid Nigerian phone number (e.g. 08012345678)"
+  }
+
+  // Email validation (optional)
+  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    errors.email = "Please enter a valid email address"
+  }
+
+  // Address validation
+  if (form.address.trim().length < 10) {
+    errors.address = "Please enter a more detailed delivery address"
+  }
+
+  return errors
+}
 
   // Filter locations based on user input
   const suggestions = useMemo(() => {
@@ -62,7 +94,12 @@ const Checkout = () => {
     )
   }
 
-  const isValid = form.name && form.phone && form.address && form.area && isValidLagosArea(form.area)
+  const isValid = form.name && 
+  form.phone && 
+  form.address && 
+  form.area && 
+  isValidLagosArea(form.area) &&
+  Object.keys(errors).length === 0
 
   const handlePaymentSuccess = async (response: { reference: string }) => {
     setSubmitting(true)
@@ -140,11 +177,19 @@ const Checkout = () => {
     e.preventDefault()
     if (!isValid) return
 
+    const validationErrors = validateForm()
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+
+    setErrors({})
+
     const reference = "OJA-" + Math.random().toString(36).substring(2, 8).toUpperCase()
 
     const handler = (window as any).PaystackPop.setup({
       key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
-      email: `${form.phone}@ojabox.com`,
+      email: form.email || `${form.phone}@ojabox.com`,
       amount: grandTotal * 100,
       currency: "NGN",
       ref: reference,
@@ -193,9 +238,14 @@ const Checkout = () => {
                     id="name"
                     required
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setForm({ ...form, name: e.target.value })
+                      if (errors.name) setErrors({ ...errors, name: "" })
+                    }}
                     placeholder="Amaka Johnson"
+                    className={errors.name ? "border-red-500" : ""}
                   />
+                  {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
@@ -203,23 +253,32 @@ const Checkout = () => {
                     id="phone"
                     required
                     value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="0801 234 5678"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setForm({ ...form, phone: e.target.value })
+                      if (errors.phone) setErrors({ ...errors, phone: "" })
+                    }}
+                    placeholder="08012345678"
+                    className={errors.phone ? "border-red-500" : ""}
                   />
+                  {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
                 </div>
                 <div className="sm:col-span-2 space-y-2">
                   <Label htmlFor="email">
-                    Email address 
+                    Email address
                     <span className="text-muted-foreground font-normal ml-1">(optional)</span>
                   </Label>
                   <Input
                     id="email"
                     type="email"
                     value={form.email}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setForm({ ...form, email: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setForm({ ...form, email: e.target.value })
+                      if (errors.email) setErrors({ ...errors, email: "" })
+                    }}
                     placeholder="amaka@gmail.com"
+                    className={errors.email ? "border-red-500" : ""}
                   />
+                  {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
                 </div>
                 <div className="sm:col-span-2 space-y-2">
                   <Label htmlFor="address">Delivery Address</Label>
@@ -227,9 +286,14 @@ const Checkout = () => {
                     id="address"
                     required
                     value={form.address}
-                    onChange={(e) => setForm({ ...form, address: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setForm({ ...form, address: e.target.value })
+                      if (errors.address) setErrors({ ...errors, address: "" })
+                    }}
                     placeholder="12 Toyin Street, Ikeja"
+                    className={errors.address ? "border-red-500" : ""}
                   />
+                  {errors.address && <p className="text-xs text-red-500">{errors.address}</p>}
                 </div>
                 
                 {/* Searchable LGA Field */}

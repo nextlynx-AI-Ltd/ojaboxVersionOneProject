@@ -1,6 +1,12 @@
 import { MapPin, Heart, ShieldCheck, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "We are a small team of young professionals in Lagos who built OjaBox to solve the market stress problem for busy households.",
+}
 
 const team = [
   {
