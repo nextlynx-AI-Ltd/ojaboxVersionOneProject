@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { Lock } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How OjaBox collects, uses, and protects your personal information in compliance with the Nigerian Data Protection Regulation.",
+}
 
 const PrivacyPolicy = () => (
   <div className="container py-12 md:py-20 max-w-3xl mx-auto">

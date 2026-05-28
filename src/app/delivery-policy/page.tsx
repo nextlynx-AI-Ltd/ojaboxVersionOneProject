@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { Truck } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Delivery Policy",
+  description: "OjaBox delivery zones, timeframes, and fees across Lagos. We currently deliver within Lagos State.",
+}
 
 const DeliveryPolicy = () => (
   <div className="container py-12 md:py-20 max-w-3xl mx-auto">

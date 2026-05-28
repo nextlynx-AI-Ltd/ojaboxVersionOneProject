@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { Shield } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Refund Policy",
+  description: "OjaBox refund and replacement policy. Learn how we handle damaged items, missing items, and delivery issues.",
+}
 
 const RefundPolicy = () => (
   <div className="container py-12 md:py-20 max-w-3xl mx-auto">

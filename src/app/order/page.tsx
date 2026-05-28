@@ -1,6 +1,11 @@
 "üse client";
 import PackCard from "@/components/PackCard";
-import { packs } from "@/data/packs";
+import { packs } from "@/data/packs";import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Browse Packs",
+  description: "Choose from our curated household food packs. Solo, couples, family and monthly options available. Customize every item before checkout.",
+}
 
 const Packs = () => (
   <div className="container py-12 md:py-16">

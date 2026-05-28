@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { FileText } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "OjaBox terms and conditions. Read our terms before placing an order.",
+}
 
 const TermsOfService = () => (
   <div className="container py-12 md:py-20 max-w-3xl mx-auto">
