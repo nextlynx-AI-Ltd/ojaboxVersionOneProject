@@ -57,10 +57,10 @@ const PackCard = ({ pack }: PackCardProps) => (
     </div>
 
     <div className="flex items-center justify-between pt-4 border-t">
-      <div>
+      {/* <div>
         <p className="text-xs text-muted-foreground">Starting from</p>
         <p className="text-lg font-bold text-primary">{formatPrice(pack.basePrice)}</p>
-      </div>
+      </div> */}
       <Button asChild size="sm">
         <Link href={`/order/customize?pack=${pack.id}`}>
           Customize <ArrowRight className="h-4 w-4" />
