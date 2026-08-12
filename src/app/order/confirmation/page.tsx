@@ -83,7 +83,7 @@ const Confirmation = () => {
         <div className="space-y-4 text-sm text-left">
           {[
             { icon: Package, text: "We're preparing your box with fresh items from the market." },
-            { icon: Clock, text: "Expect delivery within 24–48 hours in Ikeja." },
+            { icon: Clock, text: "Expect delivery within 24 hours in {confirmation.delivery.area}." },
             { icon: MessageCircle, text: "You'll receive a WhatsApp update when your rider is on the way." },
           ].map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-start gap-3">
