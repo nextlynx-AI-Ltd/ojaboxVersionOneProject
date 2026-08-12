@@ -1,4 +1,4 @@
-export type ItemCategory = "staples" | "quick-foods" | "cooking-essentials" | "extras";
+export type ItemCategory = "staples" | "quick-foods" | "cooking-essentials" | "extras"; //to add proteins like frozen foods and spice box
 
 export const categoryLabels: Record<ItemCategory, string> = {
   staples: "Staples / Essentials",
@@ -229,7 +229,6 @@ export const MAINLAND_AREAS: Record<string, number> = {
 // Island Lagos areas - Fixed price of 4500
 export const ISLAND_AREAS = [
   "Lekki",
-  "VI",
   "Victoria Island",
   "Ikoyi",
   "Ajah",
@@ -262,7 +261,8 @@ export const getDeliveryFee = (area: string): number => {
   // Check mainland areas
   const mainlandKey = Object.keys(MAINLAND_AREAS).find(key => key.toLowerCase() === normalizedArea);
   if (mainlandKey) {
-    return MAINLAND_AREAS[mainlandKey];
+    // return MAINLAND_AREAS[mainlandKey];
+    return 3000; // Defaulting to 3000 for all mainland areas as per your request
   }
   
   return 3000;

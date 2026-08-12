@@ -60,7 +60,7 @@ const values = [
   {
     icon: MapPin,
     title: "Lagos Born & Based",
-    description: "We understand Lagos. The traffic, the hustle, the need for convenience. Oja Box is built for this city, starting from Ikeja.",
+    description: "We understand Lagos. The traffic, the hustle, the need for convenience. Oja Box is built for this city, by people who live here too.",
   },
 ]
 
@@ -98,7 +98,7 @@ const About = () => (
         </p>
         <p>
           That's how Oja Box was born. Pick a pack, adjust it to your taste, and we handle the rest.
-          We start in Ikeja and we're growing from there.
+          {/* We start in Ikeja and we're growing from there. */}
         </p>
       </div>
     </section>

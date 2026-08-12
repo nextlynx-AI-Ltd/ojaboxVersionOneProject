@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "OjaBox — Foodstuff Delivered in Lagos",
     template: "%s | OjaBox"
   },
-  description: "Restock your kitchen without the market stress. Curated food packs delivered to your door in Lagos. Choose a pack, customize it, and get it delivered in 24–48 hours.",
+  description: "Restock your kitchen without the market stress. Curated food packs delivered to your door in Lagos. Choose a pack, customize it, and get it delivered in 24 hours.",
   keywords: ["foodstuff delivery Lagos", "grocery delivery Lagos", "food pack Lagos", "Lagos food delivery", "Nigerian grocery delivery"],
   authors: [{ name: "OjaBox" }],
   creator: "OjaBox",

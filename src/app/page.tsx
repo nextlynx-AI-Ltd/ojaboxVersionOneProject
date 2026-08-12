@@ -92,7 +92,7 @@ const Index = () => (
           {[
             { step: "1", title: "Pick a pack", desc: "Choose a pre-built foodstuff box that matches your household size and cooking style." },
             { step: "2", title: "Customize it", desc: "Add, remove, or adjust quantities. See your total update in real time — no surprises." },
-            { step: "3", title: "Get it delivered", desc: "Pay securely via Paystack and receive your box within 24–48 hours in Ikeja." },
+            { step: "3", title: "Get it delivered", desc: "Pay securely via Paystack and receive your box within 24 hours in Ikeja." },
           ].map(({ step, title, desc }) => (
             <div key={step} className="text-center">
               <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-lg font-bold">
