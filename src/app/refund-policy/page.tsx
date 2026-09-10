@@ -32,8 +32,6 @@ const RefundPolicy = () => (
             "You receive damaged items (e.g. broken eggs, leaking oil)",
             "Items are missing from your order",
             "You receive the wrong items",
-            "The quality of an item is clearly unacceptable upon delivery",
-            "Items are significantly short-weighted compared to what was ordered",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-primary mt-2 shrink-0" />
@@ -46,7 +44,7 @@ const RefundPolicy = () => (
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">2. Time Frame for Complaints</h2>
         <p className="mb-3">
-          All issues must be reported within <strong className="text-foreground">24 hours of delivery</strong>.
+          All issues must be reported within <strong className="text-foreground">upon delivery</strong>.
         </p>
         <p className="mb-3">To report an issue, contact us via WhatsApp with:</p>
         <ul className="space-y-2 list-none">
@@ -93,7 +91,7 @@ const RefundPolicy = () => (
           {[
             "Change of mind after delivery",
             "Minor variations in size, weight, or packaging",
-            "Issues reported after 24 hours of delivery",
+            "Issues reported after signing the confirmation form upon delivery",
             "Incorrect delivery details provided by the customer",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">

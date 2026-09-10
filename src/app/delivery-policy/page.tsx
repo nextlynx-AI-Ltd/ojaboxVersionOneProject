@@ -71,7 +71,7 @@ const DeliveryPolicy = () => (
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">2. Delivery Timeframe</h2>
         <p className="mb-3">
-          Orders are typically delivered within <strong className="text-foreground">24–48 hours</strong> of 
+          Orders are typically delivered within <strong className="text-foreground">24 hours</strong> of 
           payment confirmation. Delivery times may vary based on:
         </p>
         <ul className="space-y-2 list-none">
@@ -96,7 +96,7 @@ const DeliveryPolicy = () => (
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">3. Order Tracking</h2>
         <p className="mb-3">
-          You will receive WhatsApp and email updates at each stage of your order:
+          You will receive WhatsApp updates at each stage of your order:
         </p>
         <ul className="space-y-2 list-none">
           {[
@@ -129,7 +129,7 @@ const DeliveryPolicy = () => (
         </ul>
       </section>
 
-      <section>
+      {/* <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">5. Delivery Partners</h2>
         <p>
           Oja Box works with trusted logistics partners to handle deliveries. 
@@ -137,13 +137,13 @@ const DeliveryPolicy = () => (
           we are not liable for delays caused by third-party logistics issues 
           outside our control.
         </p>
-      </section>
+      </section> */}
 
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">6. Damaged or Missing Items on Delivery</h2>
         <p>
           If you receive damaged or missing items, please inspect your order immediately 
-          upon delivery and report any issues within 24 hours. For full details on how 
+          upon delivery and report any issues upon delivery. For full details on how 
           we handle this, please read our{" "}
           <Link href="/refund-policy" className="text-primary hover:underline">
             Refund & Replacement Policy
