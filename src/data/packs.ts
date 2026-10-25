@@ -39,16 +39,16 @@ export const allItems: FoodItem[] = [
   { id: "rice", name: "Rice", unit: "5kg bag", pricePerUnit: 7500, category: "staples", image: "/assets/items/rice.jpeg", description: "Premium rice" },
   { id: "garri", name: "Garri", unit: "5kg bag", pricePerUnit: 1800, category: "staples", image: "/assets/items/Garri.jpeg", description: "Garri for eba or soaking" },
   { id: "beans", name: "Beans", unit: "2.5kg bag", pricePerUnit: 4000, category: "staples", image: "/assets/items/beans.jpeg", description: "Clean beans" },
-  { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber yam" },
+  // { id: "yam", name: "Yam", unit: "1 tuber", pricePerUnit: 4000, category: "staples", image: "/assets/items/yam.jpg", description: "One full tuber yam" },
   { id: "elubo", name: "Yam Flour (Elubo)", unit: "2.5kg bag", pricePerUnit: 3800, category: "staples", image: "/assets/items/elubo.jpg", description: "Ground yam flour for amala" },
   { id: "semo", name: "Semovita", unit: "1kg pack", pricePerUnit: 1800, category: "staples", image: "/assets/items/semovita.png", description: "Smooth semovita for swallow" },
-  { id: "poundo-yam", name: "Poundo Yam Flour", unit: "900g pack", pricePerUnit: 4000, category: "staples", image: "/assets/items/poundo-yam.jpg", description: "Smooth poundo yam flour" },
+  // { id: "poundo-yam", name: "Poundo Yam Flour", unit: "900g pack", pricePerUnit: 4000, category: "staples", image: "/assets/items/poundo-yam.jpg", description: "Smooth poundo yam flour" },
 
   // Quick Foods
   { id: "spaghetti", name: "Spaghetti", unit: "pack", pricePerUnit: 1000, category: "quick-foods", image: "/assets/items/spaghetti.jpg", description: "Golden Penny spaghetti pasta" },
   { id: "macaroni", name: "Macaroni", unit: "pack", pricePerUnit: 1000, category: "quick-foods", image: "/assets/items/macaroni.jpg", description: "Golden Penny macaroni pasta" },
   { id: "noodles", name: "Noodles", unit: "pack", pricePerUnit: 250, category: "quick-foods", image: "/assets/items/noodles.jpeg", description: "Indomie Instant noodles" },
-  { id: "bean-flour", name: "Bean Flour", unit: "500g", pricePerUnit: 3100, category: "quick-foods", image: "/assets/items/bean-flour.jpg", description: "Bean flour for moi moi and akara" },
+  // { id: "bean-flour", name: "Bean Flour", unit: "500g", pricePerUnit: 3100, category: "quick-foods", image: "/assets/items/bean-flour.jpg", description: "Bean flour for moi moi and akara" },
 
   // Cooking Essentials
   { id: "salt", name: "Salt", unit: "1 pack", pricePerUnit: 300, category: "cooking-essentials", image: "/assets/items/salt.png", description: "Dangote table salt" },
@@ -59,22 +59,22 @@ export const allItems: FoodItem[] = [
   { id: "ground-pepper", name: "Ground Pepper (Ata Gungun)", unit: "sachet roll", pricePerUnit: 800, category: "cooking-essentials", image: "/assets/items/ground-pepper.jpg", description: "Hot pepper ground pepper" },
   { id: "seasoning-curry", name: "Seasoning Curry", unit: "sachet roll", pricePerUnit: 600, category: "cooking-essentials", image: "/assets/items/curry.jpeg", description: "Gino Curry seasoning set" },
   { id: "seasoning-thyme", name: "Seasoning (Thyme)", unit: "sachet roll", pricePerUnit: 600, category: "cooking-essentials", image: "/assets/items/thyme.jpg", description: "Gino Thyme seasoning set" },
-  { id: "onions", name: "Onions", unit: "piece", pricePerUnit: 200, category: "cooking-essentials", image: "/assets/items/onions.jpg", description: "Fresh Big-sized onions" },
+  // { id: "onions", name: "Onions", unit: "piece", pricePerUnit: 200, category: "cooking-essentials", image: "/assets/items/onions.jpg", description: "Fresh Big-sized onions" },
 
   // Extras
-  { id: "iru", name: "Locust Beans (Iru)", unit: "portion", pricePerUnit: 1200, category: "extras", image: "/assets/items/iru.jpg", description: "Fermented locust beans for soups" },
+  // { id: "iru", name: "Locust Beans (Iru)", unit: "portion", pricePerUnit: 1200, category: "extras", image: "/assets/items/iru.jpg", description: "Fermented locust beans for soups" },
   { id: "eggs", name: "Eggs", unit: "crate (6)", pricePerUnit: 1400, category: "extras", image: "/assets/items/eggs.png", description: "Fresh chicken eggs" },
-  { id: "plantain", name: "Plantain", unit: "piece", pricePerUnit: 400, category: "extras", image: "/assets/items/plantain.jpg", description: "Ripe plantain for frying or boiling" },
+  // { id: "plantain", name: "Plantain", unit: "piece", pricePerUnit: 400, category: "extras", image: "/assets/items/plantain.jpg", description: "Ripe plantain for frying or boiling" },
   { id: "potatoes", name: "Potatoes", unit: "portion", pricePerUnit: 1500, category: "extras", image: "/assets/items/potatoes.jpg", description: "Fresh Irish potatoes" },
-  { id: "ginger-garlic", name: "Ginger & Garlic Powder", unit: "sachet roll", pricePerUnit: 800, category: "extras", image: "/assets/items/ginger&garlic.jfif", description: "Vitals ginger garlic Powder" },
-  { id: "cornflakes", name: "Cornflakes", unit: "pack", pricePerUnit: 2500, category: "extras", image: "/assets/items/cornflakes.jfif", description: "Breakfast cornflakes cereal" },
+  // { id: "ginger-garlic", name: "Ginger & Garlic Powder", unit: "sachet roll", pricePerUnit: 800, category: "extras", image: "/assets/items/ginger&garlic.jfif", description: "Vitals ginger garlic Powder" },
+  // { id: "cornflakes", name: "Cornflakes", unit: "pack", pricePerUnit: 2500, category: "extras", image: "/assets/items/cornflakes.jfif", description: "Breakfast cornflakes cereal" },
 //   { id: "milk", name: "Milk", unit: "tin", pricePerUnit: 1500, category: "extras", image: "/assets/items/milk.jpg", description: "Powdered or evaporated milk" },
 //   { id: "milo", name: "Milo", unit: "tin", pricePerUnit: 2500, category: "extras", image: "/assets/items/milo.jpg", description: "Milo chocolate drink" },
   { id: "sugar", name: "Sugar", unit: "500g pack", pricePerUnit: 1000, category: "extras", image: "/assets/items/sugar.png", description: "Golden Penny Granulated white sugar" },
 //   { id: "tea-coffee", name: "Tea / Coffee", unit: "pack", pricePerUnit: 600, category: "extras", image: "/assets/items/tea-coffee.jpg", description: "Lipton tea or instant coffee" },
-  { id: "custard", name: "Custard", unit: "pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/custard.jpg", description: "Custard powder for breakfast" },
-  { id: "pap", name: "Pap (Ogi)", unit: "portion", pricePerUnit: 800, category: "extras", image: "/assets/items/pap.jpg", description: "Nigerian corn pap" },
-  { id: "butter", name: "Butter", unit: "100g pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/butter.jpg", description: "Fresh butter" },
+  // { id: "custard", name: "Custard", unit: "pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/custard.jpg", description: "Custard powder for breakfast" },
+  // { id: "pap", name: "Pap (Ogi)", unit: "portion", pricePerUnit: 800, category: "extras", image: "/assets/items/pap.jpg", description: "Nigerian corn pap" },
+  // { id: "butter", name: "Butter", unit: "100g pack", pricePerUnit: 1200, category: "extras", image: "/assets/items/butter.jpg", description: "Fresh butter" },
 ];
 
 const getItem = (id: string) => allItems.find((i) => i.id === id)!;
@@ -99,9 +99,9 @@ export const packs: Pack[] = [
       { item: getItem("seasoning-cubes"), quantity: 1, min: 1, max: 2 },
       { item: getItem("tomato-paste"), quantity: 2, min: 1, max: 5 },
       { item: getItem("ground-pepper"), quantity: 1, min: 0, max: 2 },
-      { item: getItem("onions"), quantity: 3, min: 0, max: 10 },
+      // { item: getItem("onions"), quantity: 3, min: 0, max: 10 },
       { item: getItem("eggs"), quantity: 1, min: 0, max: 3 },
-      { item: getItem("plantain"), quantity: 4, min: 0, max: 8 },
+      // { item: getItem("plantain"), quantity: 4, min: 0, max: 8 },
     ],
   },
   {
@@ -124,11 +124,11 @@ export const packs: Pack[] = [
       { item: getItem("seasoning-cubes"), quantity: 1, min: 1, max: 2 },
       { item: getItem("tomato-paste"), quantity: 4, min: 2, max: 8 },
       { item: getItem("ground-pepper"), quantity: 1, min: 0, max: 3 },
-      { item: getItem("onions"), quantity: 5, min: 0, max: 10 },
+      // { item: getItem("onions"), quantity: 5, min: 0, max: 10 },
       { item: getItem("eggs"), quantity: 1, min: 0, max: 3 },
-      { item: getItem("plantain"), quantity: 6, min: 0, max: 12 },
+      // { item: getItem("plantain"), quantity: 6, min: 0, max: 12 },
       { item: getItem("potatoes"), quantity: 1, min: 0, max: 3 },
-      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
+      // { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
     ],
   },
   {
@@ -151,12 +151,12 @@ export const packs: Pack[] = [
       { item: getItem("seasoning-cubes"), quantity: 2, min: 1, max: 4 },
       { item: getItem("tomato-paste"), quantity: 6, min: 3, max: 12 },
       { item: getItem("ground-pepper"), quantity: 1, min: 1, max: 3 },
-      { item: getItem("onions"), quantity: 8, min: 4, max: 15 },
+      // { item: getItem("onions"), quantity: 8, min: 4, max: 15 },
       { item: getItem("eggs"), quantity: 2, min: 0, max: 4 },
-      { item: getItem("plantain"), quantity: 10, min: 0, max: 20 },
+      // { item: getItem("plantain"), quantity: 10, min: 0, max: 20 },
       { item: getItem("potatoes"), quantity: 1, min: 0, max: 5 },
-      { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
-      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 4 },
+      // { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
+      // { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 4 },
     ],
   },
   {
@@ -180,13 +180,13 @@ export const packs: Pack[] = [
       { item: getItem("seasoning-cubes"), quantity: 3, min: 1, max: 5 },
       { item: getItem("tomato-paste"), quantity: 10, min: 5, max: 18 },
       { item: getItem("ground-pepper"), quantity: 2, min: 1, max: 4 },
-      { item: getItem("onions"), quantity: 10, min: 5, max: 20 },
+      // { item: getItem("onions"), quantity: 10, min: 5, max: 20 },
       { item: getItem("eggs"), quantity: 2, min: 1, max: 4 },
-      { item: getItem("plantain"), quantity: 15, min: 5, max: 25 },
+      // { item: getItem("plantain"), quantity: 15, min: 5, max: 25 },
       { item: getItem("potatoes"), quantity: 1, min: 0, max: 3 },
-      { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
-      { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
-      { item: getItem("cornflakes"), quantity: 1, min: 0, max: 2 },
+      // { item: getItem("iru"), quantity: 1, min: 0, max: 2 },
+      // { item: getItem("ginger-garlic"), quantity: 1, min: 0, max: 2 },
+      // { item: getItem("cornflakes"), quantity: 1, min: 0, max: 2 },
       // { item: getItem("milk"), quantity: 1, min: 0, max: 3 },
       // { item: getItem("milo"), quantity: 1, min: 0, max: 2 },
       { item: getItem("sugar"), quantity: 1, min: 0, max: 3 },
@@ -255,7 +255,7 @@ export const getDeliveryFee = (area: string): number => {
   
   // Check if it's an island area
   if (ISLAND_AREAS.some(a => a.toLowerCase() === normalizedArea)) {
-    return 4500;
+    return 3500;
   }
   
   // Check mainland areas

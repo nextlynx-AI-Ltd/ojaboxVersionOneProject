@@ -14,7 +14,7 @@ const TermsOfService = () => (
         <FileText className="h-7 w-7 text-primary" />
       </div>
       <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
-      <p className="text-muted-foreground">Last updated: May 2026</p>
+      <p className="text-muted-foreground">Last updated: September 2026</p>
     </div>
 
     <div className="space-y-8 text-muted-foreground leading-relaxed">
@@ -38,7 +38,6 @@ const TermsOfService = () => (
         <p className="mb-3">To use Oja Box you must:</p>
         <ul className="space-y-2 list-none">
           {[
-            "Be at least 18 years of age",
             "Provide accurate and complete delivery information",
             "Have a valid means of payment via Paystack",
             "Be located within our current delivery zones in Lagos",
@@ -128,7 +127,7 @@ const TermsOfService = () => (
           {[
             "Providing accurate delivery details at the time of order",
             "Being available or having someone available to receive your delivery",
-            "Inspecting your order upon delivery and reporting issues within 24 hours",
+            "Inspecting your order upon delivery and reporting issues upon delivery",
             "Not providing false information when placing an order",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">
@@ -147,7 +146,6 @@ const TermsOfService = () => (
         <ul className="space-y-2 list-none">
           {[
             "Indirect or consequential losses arising from use of our service",
-            "Delays caused by third-party logistics partners",
             "Loss or damage caused by incorrect delivery information provided by the customer",
             "Price fluctuations in the general market beyond our control",
           ].map((item) => (

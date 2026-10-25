@@ -68,7 +68,7 @@ const PrivacyPolicy = () => (
         </p>
       </section>
 
-      <section>
+      {/* <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">3. How We Store Your Information</h2>
         <p className="mb-3">
           Your order information is stored securely in Airtable, a cloud-based database 
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => (
           Payment information is handled entirely by Paystack and is never stored on 
           our servers. Paystack is PCI-DSS compliant and meets international security standards.
         </p>
-      </section>
+      </section> */}
 
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">4. Who We Share Your Information With</h2>
@@ -100,16 +100,16 @@ const PrivacyPolicy = () => (
         </p>
       </section>
 
-      <section>
+      {/* <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">5. How Long We Keep Your Information</h2>
         <p>
           We retain your order information for up to 12 months for record-keeping and 
           customer service purposes. After this period, your personal data is deleted 
           from our systems unless required by law to retain it longer.
         </p>
-      </section>
+      </section> */}
 
-      <section>
+      {/* <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">6. Your Rights</h2>
         <p className="mb-3">Under the Nigerian Data Protection Regulation (NDPR), you have the right to:</p>
         <ul className="space-y-2 list-none">
@@ -130,7 +130,7 @@ const PrivacyPolicy = () => (
           To exercise any of these rights, contact us via WhatsApp and we will respond 
           within 7 business days.
         </p>
-      </section>
+      </section> */}
 
       <section>
         <h2 className="text-lg font-semibold text-foreground mb-3">7. Cookies</h2>
