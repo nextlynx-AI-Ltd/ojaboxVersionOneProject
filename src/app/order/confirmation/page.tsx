@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { CheckCircle2, MessageCircle, Package, Clock, Loader2 } from "lucide-react"
+import { CheckCircle2, MessageCircle, Package, Clock, Loader2, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/data/packs"
 import { useOrder } from "@/context/OrderContext"
@@ -44,6 +44,11 @@ const Confirmation = () => {
   const whatsappMessage = encodeURIComponent(
     `Hi OjaBox! I just placed Order ${confirmation.orderId}.\n\nPack: ${confirmation.packName}\nTotal: ${formatPrice(confirmation.grandTotal)}\nDelivery: ${confirmation.delivery.address}, ${confirmation.delivery.area}\n\nPlease confirm my order. Thank you!`
   )
+
+  const handleDownloadInvoice = async () => {
+    const { generateInvoice } = await import("@/lib/generateInvoice")
+    generateInvoice(confirmation)
+  }
 
   return (
     <div className="container py-12 md:py-20 flex-1 max-w-2xl mx-auto text-center">
@@ -95,6 +100,9 @@ const Confirmation = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <Button variant="outline" onClick={handleDownloadInvoice}>
+          <Download className="h-4 w-4" /> Download Invoice
+        </Button>
         <Button asChild variant="outline">
           <a href={`https://wa.me/2349067634581?text=${whatsappMessage}`}
             target="_blank"

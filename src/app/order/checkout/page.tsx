@@ -14,10 +14,19 @@ import { useOrder } from "@/context/OrderContext"
 const PACKAGING_FEE = 1000
 const SERVICE_CHARGE = 1500
 
+const HEARD_ABOUT_OPTIONS = [
+  "Instagram",
+  "Twitter / X",
+  "TikTok",
+  "WhatsApp",
+  "Friend or family",
+  "Other",
+]
+
 const Checkout = () => {
   const router = useRouter()
   const { order, setConfirmation, clearOrder } = useOrder()
-  const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", area: "" })
+  const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", area: "", heardAbout: "" })
   const [submitting, setSubmitting] = useState(false)
   const [areaError, setAreaError] = useState("")
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -139,6 +148,7 @@ const Checkout = () => {
           packagingFee: PACKAGING_FEE,
           serviceCharge: SERVICE_CHARGE,
           grandTotal,
+          heardAbout: form.heardAbout,
         }),
       })
 
@@ -154,6 +164,7 @@ const Checkout = () => {
           packName: order.packName,
           items: itemsSummary,
           grandTotal,
+          heardAbout: form.heardAbout,
         }),
       })
 
@@ -161,6 +172,16 @@ const Checkout = () => {
         orderId: response.reference,
         packName: order.packName,
         grandTotal,
+        subtotal: order.total,
+        deliveryFee,
+        packagingFee: PACKAGING_FEE,
+        serviceCharge: SERVICE_CHARGE,
+        items: order.items.map((ci) => ({
+          name: ci.item.name,
+          unit: ci.item.unit,
+          quantity: ci.quantity,
+          pricePerUnit: ci.item.pricePerUnit,
+        })),
         delivery: form,
         date: new Date().toISOString(),
       })
@@ -326,6 +347,26 @@ const Checkout = () => {
                   )}
                   
                   {areaError && <p className="text-sm text-red-500 mt-1">{areaError}</p>}
+                </div>
+
+                <div className="sm:col-span-2 space-y-2">
+                  <Label htmlFor="heardAbout">
+                    How did you hear about OjaBox?
+                    <span className="text-muted-foreground font-normal ml-1">(optional)</span>
+                  </Label>
+                  <select
+                    id="heardAbout"
+                    value={form.heardAbout}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                      setForm({ ...form, heardAbout: e.target.value })
+                    }
+                    className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <option value="">Select an option</option>
+                    {HEARD_ABOUT_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

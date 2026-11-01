@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
       packagingFee,
       serviceCharge,
       grandTotal,
+      heardAbout,
     } = body
 
     await base(process.env.AIRTABLE_TABLE_ID!).create([
@@ -41,6 +42,7 @@ export async function POST(req: NextRequest) {
       "Packaging Fee": packagingFee,
       "Service Charge": serviceCharge,
       "Grand Total": grandTotal,
+      "Heard About Us": heardAbout || "",
       "Payment Status": "Paid",
       "Delivery Status": "Pending",
       "Date": new Date().toISOString(),
