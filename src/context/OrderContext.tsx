@@ -21,7 +21,17 @@ export interface ConfirmationData {
   orderId: string
   packName: string
   grandTotal: number
-  delivery: { name: string; phone: string; address: string; area: string }
+  subtotal: number
+  deliveryFee: number
+  packagingFee: number
+  serviceCharge: number
+  items: {
+    name: string
+    unit: string
+    quantity: number
+    pricePerUnit: number
+  }[]
+  delivery: { name: string; phone: string; email?: string; address: string; area: string }
   date: string
 }
 

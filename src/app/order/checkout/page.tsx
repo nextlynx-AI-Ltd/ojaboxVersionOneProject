@@ -161,6 +161,16 @@ const Checkout = () => {
         orderId: response.reference,
         packName: order.packName,
         grandTotal,
+        subtotal: order.total,
+        deliveryFee,
+        packagingFee: PACKAGING_FEE,
+        serviceCharge: SERVICE_CHARGE,
+        items: order.items.map((ci) => ({
+          name: ci.item.name,
+          unit: ci.item.unit,
+          quantity: ci.quantity,
+          pricePerUnit: ci.item.pricePerUnit,
+        })),
         delivery: form,
         date: new Date().toISOString(),
       })
